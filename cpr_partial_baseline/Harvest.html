@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Harvest
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        This is a common-pool resource game with
+        {{ Constants.players_per_group }} players per group,
+        an endowment of {{ Constants.endowment }}.
+        You will choose how much effort you want to put for harvest the common-pool resource.
+    </p>
+
+    {% formfields %}
+
+    {% next_button %}
+
+{% endblock %}
