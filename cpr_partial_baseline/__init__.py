@@ -13,10 +13,9 @@ from otree.api import (
 import random
 
 
-
 class Constants(BaseConstants):
     name_in_url = 'ian_cpr_baseline'
-    players_per_group = 4
+    players_per_group = 2
     num_rounds = 3
     endowment = 25
 
@@ -31,9 +30,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     harvest = models.CurrencyField(
-        min=0, max=Constants.endowment, label="How much will you harvest?"
+        min=0, max=Constants.endowment, label="How much will you harvest?",
     )
-
 
 #FUNCTIONS
 #Round setup
@@ -61,20 +59,35 @@ def set_payoffs(g: Group):
 
     #Earnings for each round
     for p in g.get_players():
-        print('payoff', p.participant.payoff)
         print('endowment', Constants.endowment)
         print('harvest', p.harvest)
         print('total harvest', g.total_harvest)
 
-        p.participant.payoff = float(5*(Constants.endowment - p.harvest) + (23*p.harvest - 0.25*g.total_harvest*p.harvest) )
+        p.payoff = float(5*Constants.endowment - 5*p.harvest + 23*p.harvest - 0.25*g.total_harvest*p.harvest)
+        print('payoff', p.participant.payoff)
 
-        #Cumulative earnings for each participant
-        p.participant.vars['totalEarnings'] += p.participant.payoff
-        print('total earnings', p.participant.vars['totalEarnings'])
+        #Cumulative earnings for each participant (Testing: This is counting twice)
+        # p.participant.vars['totalEarnings'] += p.participant.payoff
+        # print('total earnings', p.participant.vars['totalEarnings'])
+
+        #For history (testing)
+        # p.payoff = float(5*Constants.endowment - 5*p.harvest + 23*p.harvest - 0.25*g.total_harvest*p.harvest)
+        # print('playerpayoff', p.payoff)
+        # print('yourpayoff', p.participant.payoff)
+        # #Cumulative earnings for each participant
+        # p.participant.vars['totalEarnings'] += p.payoff
+        # print('total earnings', p.participant.vars['totalEarnings'])
 
         #Cash amount
-        p.participant.vars['totalCash'] = p.participant.vars['totalEarnings'] / 10
+        # p.participant.payoff.to_real_world_currency()
+        # print(p.participant.payoff)
+        p.participant.vars['totalCash'] = p.participant.payoff / 100
 
+
+#storing earnings history (testing)
+# def participants_earnings_history(g: Group):
+#     for p in g.get_players():
+#         return [p.participant.vars['totalEarnings'] for p in player.in_previous_rounds()]
 
 
 

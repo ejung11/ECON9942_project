@@ -20,11 +20,11 @@
 
         <tr><td colspan="2"><hr/></td></tr>
 
-        <tr><td>Your earnings this round:</td><td>{{ player.participant.payoff }}</td></tr>
+        <tr><td>Your earnings this round:</td><td>{{ player.payoff }}</td></tr>
 
         <tr><td colspan="2"><hr/></td></tr>
 
-        <tr><td>Your accumulated earnings:</td><td>{{ player.participant.vars.totalEarnings }}</td></tr>
+        <tr><td>Your accumulated earnings:</td><td>{{ player.participant.payoff }}</td></tr>
 
     </table>
     <p></p>
@@ -40,15 +40,15 @@
                         <th class="text-center">Round</th>
                         <th class="text-center">Your harvest</th>
                         <th class="text-center">Your earning (Round)</th>
-                        <th class="text-center">Total earnings</th>
+                        <th class="text-center">Accumulated earnings</th>
                     </tr>
                     <tbody>
                     {% for p in player.in_previous_rounds %}
                         <tr>
                             <td class="text-center my_style">{{p.round_number}}</td>
                             <td class="text-center"> {{p.harvest}}</td>
+                            <td class="text-center"> {{p.payoff}}</td>
                             <td class="text-center"> {{p.participant.payoff}}</td>
-                            <td class="text-center"> {{p.participant.vars.totalEarnings}}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

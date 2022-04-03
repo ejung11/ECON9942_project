@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
     dict(
         name='cpr_partial_baseline',
         display_name='CPR game partial out-put sharing (baseline)',
-        num_demo_participants=4,
+        num_demo_participants=2,
         app_sequence=['cpr_partial_baseline'],
     ),
 
@@ -31,8 +31,11 @@ SESSION_CONFIGS = [
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
+#Use points in the rounds and exchange rate is 1 points = $0.01
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=0.01,
+    participation_fee=0.00,
+    doc=""
 )
 
 # ISO-639 code
@@ -41,7 +44,10 @@ LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = False
+USE_POINTS = True
+#Changing points to tokens
+POINTS_CUSTOM_NAME = 'tokens'
+POINTS_DECIMAL_PLACES = 2
 
 ROOMS = [
     dict(
