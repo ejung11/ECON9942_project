@@ -116,8 +116,8 @@ class ResultsWaitPage(WaitPage):
 class Results(Page):
     """Players payoff: How much each has earned"""
 
-#class RandomDraw(Page):
-#    pass
+class RandomDraw(Page):
+    pass
 
 class PaymentInfo(Page):
     @staticmethod
@@ -134,5 +134,6 @@ page_sequence = [
     Harvest,
     ResultsWaitPage,
     Results,
+    RandomDraw,
     PaymentInfo,
 ]
