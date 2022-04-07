@@ -18,6 +18,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 3
     endowment = 25
+    conversion = 0.01
 
 
 class Subsession(BaseSubsession):
@@ -25,13 +26,18 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    total_harvest = models.CurrencyField()
+    total_harvest = models.IntegerField()
+    #need to implement function
+    destruction = models.IntegerField()
 
 
 class Player(BasePlayer):
-    harvest = models.CurrencyField(
+    harvest = models.IntegerField(
         min=0, max=Constants.endowment, label="How much will you harvest?",
     )
+    #need functions
+    history_accumulated_earnings = models.IntegerField()
+    period_payoff = models.FloatField()
 
 #FUNCTIONS
 #Round setup
@@ -54,6 +60,17 @@ def creating_session(subsession):
 def set_payoffs(g: Group):
     #setup group total harvest
     g.total_harvest = 0
+
+    #random draw for the group
+    #set max as group size
+    g.destruction =  random.uniform(0,50)
+
+    #group level binary var of end T/F
+    #if hit T then you can set to skip  ->
+    #static method in each page (havest resultwait result) to skip if certain condition is met.
+    #add another page that shows the game ended (destruction of resource)
+
+
     for p in g.get_players():
         g.total_harvest += p.harvest
 
@@ -63,7 +80,7 @@ def set_payoffs(g: Group):
         print('harvest', p.harvest)
         print('total harvest', g.total_harvest)
 
-        p.payoff = float(5*Constants.endowment - 5*p.harvest + 23*p.harvest - 0.25*g.total_harvest*p.harvest)
+        p.period_payoff = float(5*Constants.endowment - 5*p.harvest + 23*p.harvest - 0.25*g.total_harvest*p.harvest)
         print('payoff', p.participant.payoff)
 
         #Cumulative earnings for each participant (Testing: This is counting twice)
@@ -82,6 +99,8 @@ def set_payoffs(g: Group):
         # p.participant.payoff.to_real_world_currency()
         # print(p.participant.payoff)
         p.participant.vars['totalCash'] = p.participant.payoff / 100
+
+
 
 
 #storing earnings history (testing)

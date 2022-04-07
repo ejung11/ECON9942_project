@@ -44,10 +44,10 @@ LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+#USE_POINTS = True
 #Changing points to tokens
-POINTS_CUSTOM_NAME = 'tokens'
-POINTS_DECIMAL_PLACES = 2
+#POINTS_CUSTOM_NAME = 'tokens'
+#POINTS_DECIMAL_PLACES = 2
 
 ROOMS = [
     dict(
