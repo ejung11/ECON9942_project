@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    <strong>Destruction of Resource!</strong>
+{% endblock %}
+
+{% block content %}
+
+
+    <p>
+        The game has ended. The resource has been destructed because of <strong>over-harvesting</strong> . <br>
+        The drawn number is <strong>{{ group.destruction }}</strong> which is
+        less or equal to the group's total harvest <strong>{{ group.total_harvest }}</strong>. <br>
+    </p>
+
+
+    {% next_button %}
+
+
+{% endblock %}

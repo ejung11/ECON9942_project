@@ -27,17 +27,24 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     total_harvest = models.IntegerField()
+    prob_ending = models.IntegerField()
     #need to implement function
     destruction = models.IntegerField()
+    end = models.BooleanField(
+        initial = False, doc = """Indicates whether the game will continue or end"""
+    )
 
 
 class Player(BasePlayer):
     harvest = models.IntegerField(
         min=0, max=Constants.endowment, label="How much will you harvest?",
     )
-    #need functions
-    history_accumulated_earnings = models.IntegerField()
+    history_accumulated_earnings = models.FloatField()
     period_payoff = models.FloatField()
+    end = models.BooleanField(
+        initial = False, doc = """Indicates whether the game will continue or end"""
+    )
+
 
 #FUNCTIONS
 #Round setup
@@ -48,8 +55,8 @@ def creating_session(subsession):
     else:
         subsession.group_like_round(1)
     #check print, comment out after checking
-    print('in creating session')
-    print('round', subsession.round_number, 'group matrix is', subsession.get_group_matrix())
+    #print('in creating session')
+    #print('round', subsession.round_number, 'group matrix is', subsession.get_group_matrix())
 
     #set individual var: total earnings for each participant
     for p in subsession.get_players():
@@ -61,18 +68,35 @@ def set_payoffs(g: Group):
     #setup group total harvest
     g.total_harvest = 0
 
-    #random draw for the group
-    #set max as group size
-    g.destruction =  random.uniform(0,50)
-
-    #group level binary var of end T/F
-    #if hit T then you can set to skip  ->
-    #static method in each page (havest resultwait result) to skip if certain condition is met.
-    #add another page that shows the game ended (destruction of resource)
-
+    # setup group random draw
+    g.destruction = random.randint(0, Constants.players_per_group * Constants.endowment)
 
     for p in g.get_players():
+        #Total harvest
         g.total_harvest += p.harvest
+
+        # group level binary var of end T/F
+        # if hit T then you can set to skip  ->
+        # static method in each page (havest, resultwait, result) to skip if certain condition is met.
+        # add another page that shows the game ended (destruction of resource)
+
+        # Probability of ending
+        g.prob_ending = round((g.total_harvest / (Constants.endowment * Constants.players_per_group)) * 100)
+        print('prob of ending', g.prob_ending)
+
+        #end or continue?
+        if g.destruction <= g.total_harvest:
+            p.group.end = True
+        else:
+            p.group.end = False
+        print('end?', g.destruction, p.group.end)
+
+        #testing the idea of getting previous value of p.group.end
+        # if p.round_number == 1:
+        #     prev_player = p.round_number(1)
+        # else:
+        #     prev_player = p.in_round(p.round_number - 1)
+        #     print('prev end?', prev_player.group.end)
 
     #Earnings for each round
     for p in g.get_players():
@@ -81,45 +105,18 @@ def set_payoffs(g: Group):
         print('total harvest', g.total_harvest)
 
         p.period_payoff = float(5*Constants.endowment - 5*p.harvest + 23*p.harvest - 0.25*g.total_harvest*p.harvest)
-        print('payoff', p.participant.payoff)
+        print('payoff', p.period_payoff)
 
-        #Cumulative earnings for each participant (Testing: This is counting twice)
-        # p.participant.vars['totalEarnings'] += p.participant.payoff
-        # print('total earnings', p.participant.vars['totalEarnings'])
+        #Cumulative earnings for each participant
+        p.participant.vars['totalEarnings'] += p.period_payoff
+        print('total earnings', p.participant.vars['totalEarnings'])
 
-        #For history (testing)
-        # p.payoff = float(5*Constants.endowment - 5*p.harvest + 23*p.harvest - 0.25*g.total_harvest*p.harvest)
-        # print('playerpayoff', p.payoff)
-        # print('yourpayoff', p.participant.payoff)
-        # #Cumulative earnings for each participant
-        # p.participant.vars['totalEarnings'] += p.payoff
-        # print('total earnings', p.participant.vars['totalEarnings'])
+        #storing history of cumulative earnings
+        p.history_accumulated_earnings = p.participant.vars['totalEarnings']
+        print('accumulated earnings tracking', p.history_accumulated_earnings )
 
         #Cash amount
-        # p.participant.payoff.to_real_world_currency()
-        # print(p.participant.payoff)
-        p.participant.vars['totalCash'] = p.participant.payoff / 100
-
-
-
-
-#storing earnings history (testing)
-# def participants_earnings_history(g: Group):
-#     for p in g.get_players():
-#         return [p.participant.vars['totalEarnings'] for p in player.in_previous_rounds()]
-
-
-
-#premature ending of the game (want to make a lottery wheel)
-#group.draw = random.uniform(0,100)
-#if group.draw <= g.total_harvest:
-#   game finishes.
-#else:
-#   game continues.
-
-
-
-
+        p.participant.vars['totalCash'] = round(p.participant.vars['totalEarnings'] * Constants.conversion, 2)
 
 
 # PAGES
@@ -135,8 +132,11 @@ class ResultsWaitPage(WaitPage):
 class Results(Page):
     """Players payoff: How much each has earned"""
 
-class RandomDraw(Page):
-    pass
+
+class Destruction(Page):
+    @staticmethod
+    def is_displayed(player):
+        return player.group.end
 
 class PaymentInfo(Page):
     @staticmethod
@@ -153,6 +153,6 @@ page_sequence = [
     Harvest,
     ResultsWaitPage,
     Results,
-    RandomDraw,
+    Destruction,
     PaymentInfo,
 ]

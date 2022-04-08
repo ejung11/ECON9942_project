@@ -10,21 +10,25 @@
 
     <table class="table-condensed" style="width:500px; margin-top:20px;">
         <tr><td>This is Round</td><td>{{ group.round_number}}</td></tr>
-        <tr><td>You harvested:</td><td>{{ player.harvest }}</td></tr>
+        <tr><td>You harvested:</td><td>{{ player.harvest }} tokens</td></tr>
         <tr><td>Other participants harvested:</td><td></td></tr>
         {% for p in player.get_others_in_group %}
-            <tr><td></td><td>{{ p.harvest }}</td></tr>
+            <tr><td></td><td>{{ p.harvest }} tokens</td></tr>
         {% endfor %}
 
-        <tr><td>Total harvest:</td><td>{{ group.total_harvest }}</td></tr>
+        <tr><td>Total harvest:</td><td>{{ group.total_harvest }} tokens</td></tr>
 
         <tr><td colspan="2"><hr/></td></tr>
 
-        <tr><td>Your earnings this round:</td><td>{{ player.payoff }}</td></tr>
+        <tr><td>Probability of ending:</td><td>{{ group.prob_ending}} %</td></tr>
 
         <tr><td colspan="2"><hr/></td></tr>
 
-        <tr><td>Your accumulated earnings:</td><td>{{ player.participant.payoff }}</td></tr>
+        <tr><td>Your earnings this round:</td><td>{{ player.period_payoff }} tokens</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>Your accumulated earnings:</td><td>{{ player.participant.vars.totalEarnings }} tokens</td></tr>
 
     </table>
     <p></p>
@@ -46,9 +50,9 @@
                     {% for p in player.in_previous_rounds %}
                         <tr>
                             <td class="text-center my_style">{{p.round_number}}</td>
-                            <td class="text-center"> {{p.harvest}}</td>
-                            <td class="text-center"> {{p.payoff}}</td>
-                            <td class="text-center"> {{p.participant.payoff}}</td>
+                            <td class="text-center"> {{p.harvest}} tokens</td>
+                            <td class="text-center"> {{p.period_payoff}} tokens</td>
+                            <td class="text-center"> {{p.history_accumulated_earnings}} tokens</td>
                         </tr>
                     {% endfor %}
                     </tbody>
