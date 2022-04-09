@@ -84,12 +84,18 @@ def set_payoffs(g: Group):
         g.prob_ending = round((g.total_harvest / (Constants.endowment * Constants.players_per_group)) * 100)
         print('prob of ending', g.prob_ending)
 
-        #end or continue?
+        # end or continue?(Prof's recommendation)
         if g.destruction <= g.total_harvest:
-            p.group.end = True
-        else:
-            p.group.end = False
-        print('end?', g.destruction, p.group.end)
+            for group_to_modify in g.in_rounds(g.round_number, Constants.num_rounds):
+                group_to_modify.end = True
+                print('end variable in round', group_to_modify.round_number, group_to_modify.end)
+
+        #end or continue?
+        # if g.destruction <= g.total_harvest:
+        #     p.group.end = True
+        # else:
+        #     p.group.end = False
+        # print('end?', g.destruction, p.group.end)
 
         #testing the idea of getting previous value of p.group.end
         # if p.round_number == 1:
