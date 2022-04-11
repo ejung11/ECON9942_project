@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
     dict(
         name='cpr_partial_baseline',
         display_name='CPR game partial out-put sharing (baseline)',
-        num_demo_participants=2,
+        num_demo_participants=8,
         app_sequence=['cpr_partial_baseline'],
     ),
 

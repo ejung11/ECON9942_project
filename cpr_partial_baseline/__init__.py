@@ -15,10 +15,11 @@ import random
 
 class Constants(BaseConstants):
     name_in_url = 'ian_cpr_baseline'
-    players_per_group = 2
-    num_rounds = 3
+    players_per_group = 8
+    num_rounds = 20
     endowment = 25
     conversion = 0.01
+    safe = 0.25
 
 
 class Subsession(BaseSubsession):
@@ -28,7 +29,6 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     total_harvest = models.IntegerField()
     prob_ending = models.IntegerField()
-    #need to implement function
     destruction = models.IntegerField()
     end = models.BooleanField(
         initial = False, doc = """Indicates whether the game will continue or end. Stay True after triggered"""
@@ -39,6 +39,7 @@ class Group(BaseGroup):
     end_prev = models.BooleanField(
         initial = False, doc = """Stay True after triggered but +1 round """
     )
+    safety = models.FloatField()
 
 
 class Player(BasePlayer):
@@ -92,13 +93,20 @@ def set_payoffs(g: Group):
         # static method in each page (havest, resultwait, result) to skip if certain condition is met.
         # add another page that shows the game ended (destruction of resource)
 
+        #group safety line
+        g.safety = (Constants.players_per_group * Constants.endowment) * Constants.safe
+        print ('safety', g.safety)
+
         # Probability of ending
-        g.prob_ending = round((g.total_harvest / (Constants.endowment * Constants.players_per_group)) * 100)
-        print('prob of ending', g.prob_ending)
+        if g.total_harvest <= g.safety:
+            g.prob_ending = 0
+        else:
+            g.prob_ending = round((g.total_harvest / (Constants.endowment * Constants.players_per_group)) * 100)
+            print('prob of ending', g.prob_ending)
 
         # end or continue?
         # var 'end' == False initially but stay True when triggered
-        if g.destruction <= g.total_harvest:
+        if g.destruction <= g.total_harvest and g.total_harvest > g.safety:
             for group_to_modify in g.in_rounds(g.round_number, Constants.num_rounds):
                 group_to_modify.end = True
                 print('end variable in round', group_to_modify.round_number, group_to_modify.end)
@@ -108,7 +116,7 @@ def set_payoffs(g: Group):
                 group_to_modify.end_prev = True
 
         # Create temporary var that will only be True for the destruction round. and stay False
-        if g.destruction <= g.total_harvest:
+        if g.destruction <= g.total_harvest and g.total_harvest > g.safety:
             p.group.end_temp = True
         else:
             p.group.end_temp = False
