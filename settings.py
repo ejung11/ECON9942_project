@@ -9,12 +9,12 @@ SESSION_CONFIGS = [
         app_sequence=['cpr_partial_baseline'],
     ),
 
-    # dict(
-    #     name='cpr_partial_forced',
-    #     display_name='CPR game partial out-put sharing (forced)',
-    #     num_demo_participants=4,
-    #     app_sequence=['cpr_partial_forced'],
-    # ),
+    dict(
+        name='cpr_partial_forced',
+        display_name='CPR game partial out-put sharing (forced)',
+        num_demo_participants=2,
+        app_sequence=['cpr_partial_forced'],
+    ),
     #
     #
     # dict(

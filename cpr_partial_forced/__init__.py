@@ -14,12 +14,13 @@ import random
 
 
 class Constants(BaseConstants):
-    name_in_url = 'ian_cpr_baseline'
-    players_per_group = 8
-    num_rounds = 20
+    name_in_url = 'ian_cpr_forced'
+    players_per_group = 2
+    num_rounds = 3
     endowment = 25
     conversion = 0.01
     safe = 0.25
+    share = 0.7
 
 
 class Subsession(BaseSubsession):
@@ -48,6 +49,7 @@ class Player(BasePlayer):
     )
     history_accumulated_earnings = models.FloatField()
     period_payoff = models.FloatField()
+    period_payoff_int = models.IntegerField()
     end = models.BooleanField(
         initial = False, doc = """Indicates whether the game will continue or end. Stay True after triggered"""
     )
@@ -128,11 +130,15 @@ def set_payoffs(g: Group):
         print('harvest', p.harvest)
         print('total harvest', g.total_harvest)
 
-        p.period_payoff = float(5*Constants.endowment - 5*p.harvest + 23*p.harvest - 0.25*g.total_harvest*p.harvest)
+        p.period_payoff = float(5*(Constants.endowment - p.harvest)
+                                + (1-Constants.share)*(23*p.harvest - 0.25*g.total_harvest*p.harvest)
+                                + (Constants.share / Constants.players_per_group)*((23 - 0.25*g.total_harvest)*g.total_harvest)
+                                )
         print('payoff', p.period_payoff)
+        p.period_payoff_int = round(p.period_payoff)
 
         #Cumulative earnings for each participant
-        p.participant.vars['totalEarnings'] += p.period_payoff
+        p.participant.vars['totalEarnings'] += p.period_payoff_int
         print('total earnings', p.participant.vars['totalEarnings'])
 
         #storing history of cumulative earnings
