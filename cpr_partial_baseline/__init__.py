@@ -16,7 +16,7 @@ import random
 class Constants(BaseConstants):
     name_in_url = 'ian_cpr_baseline'
     players_per_group = 8
-    num_rounds = 20
+    num_rounds = 3
     endowment = 25
     conversion = 0.01
     safe = 0.25
@@ -46,6 +46,7 @@ class Player(BasePlayer):
     harvest = models.IntegerField(
         min=0, max=Constants.endowment, label="How much will you harvest?",
     )
+    others_harvest = models.IntegerField()
     history_accumulated_earnings = models.FloatField()
     period_payoff = models.FloatField()
     period_payoff_int = models.IntegerField()
@@ -84,6 +85,7 @@ def set_payoffs(g: Group):
 
     # setup group random draw
     g.destruction = random.randint(0, Constants.players_per_group * Constants.endowment)
+    print('destruction',g.destruction)
 
     for p in g.get_players():
         #Total harvest

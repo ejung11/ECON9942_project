@@ -12,7 +12,7 @@ SESSION_CONFIGS = [
     dict(
         name='cpr_partial_forced',
         display_name='CPR game partial out-put sharing (forced)',
-        num_demo_participants=2,
+        num_demo_participants=8,
         app_sequence=['cpr_partial_forced'],
     ),
     #

@@ -15,7 +15,7 @@ import random
 
 class Constants(BaseConstants):
     name_in_url = 'ian_cpr_forced'
-    players_per_group = 2
+    players_per_group = 8
     num_rounds = 3
     endowment = 25
     conversion = 0.01
