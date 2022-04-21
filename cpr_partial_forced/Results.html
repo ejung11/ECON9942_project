@@ -10,13 +10,10 @@
 
     <table class="table-condensed" style="width:500px; margin-top:20px;">
         <tr><td>This is Round</td><td>{{ group.round_number}}</td></tr>
-        <tr><td>You harvested:</td><td>{{ player.harvest }} tokens</td></tr>
-        <tr><td>Other participants harvested:</td><td></td></tr>
-        {% for p in player.get_others_in_group %}
-            <tr><td></td><td>{{ p.harvest }} tokens</td></tr>
-        {% endfor %}
-
-        <tr><td>Total harvest:</td><td>{{ group.total_harvest }} tokens</td></tr>
+        <tr><td>You harvested:</td><td>{{ player.harvest }} efforts</td></tr>
+        <tr><td>Other participants total harvested:</td><td></td></tr>
+        <tr><td></td><td>{{ player.others_harvest }} efforts</td></tr>
+        <tr><td>Total harvest:</td><td>{{ group.total_harvest }} efforts</td></tr>
 
         <tr><td colspan="2"><hr/></td></tr>
 

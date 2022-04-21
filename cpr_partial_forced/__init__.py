@@ -47,6 +47,7 @@ class Player(BasePlayer):
     harvest = models.IntegerField(
         min=0, max=Constants.endowment, label="How much will you harvest?",
     )
+    others_harvest = models.IntegerField()
     history_accumulated_earnings = models.FloatField()
     period_payoff = models.FloatField()
     period_payoff_int = models.IntegerField()
@@ -147,6 +148,12 @@ def set_payoffs(g: Group):
 
         #Cash amount
         p.participant.vars['totalCash'] = round(p.participant.vars['totalEarnings'] * Constants.conversion, 2)
+
+    #others harvest
+    for p in g.get_players():
+        p.others_harvest = g.total_harvest - p.harvest
+
+
 
 
 # PAGES
