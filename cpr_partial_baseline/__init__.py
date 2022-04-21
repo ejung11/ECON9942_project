@@ -145,6 +145,12 @@ def set_payoffs(g: Group):
         #Cash amount
         p.participant.vars['totalCash'] = round(p.participant.vars['totalEarnings'] * Constants.conversion, 2)
 
+    #others harvest
+    for p in g.get_players():
+        p.others_harvest = g.total_harvest - p.harvest
+
+
+
 
 # PAGES
 class Harvest(Page):
