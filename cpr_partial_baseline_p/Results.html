@@ -1,0 +1,62 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+
+    <table class="table-condensed" style="width:500px; margin-top:20px;">
+        <tr><td>This is Round</td><td>{{ group.round_number}}</td></tr>
+        <tr><td>You harvested:</td><td>{{ player.harvest }} efforts</td></tr>
+        <tr><td>Other participants total harvested:</td><td></td></tr>
+        <tr><td></td><td>{{ player.others_harvest }} efforts</td></tr>
+        <tr><td>Total harvest:</td><td>{{ group.total_harvest }} efforts</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>Probability of ending:</td><td><Font COLOR="#ff0000">{{ group.prob_ending}}</Font> %</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>Your earnings this round:</td><td>{{ player.period_payoff_int }} tokens</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>Your accumulated earnings:</td><td>{{ player.participant.vars.totalEarnings }} tokens</td></tr>
+
+    </table>
+    <p></p>
+
+    {% if player.round_number != 1 %}
+{#        my comment goes here...#}
+        <div class="card-header mb-3 text-center" style="background:#DEF0FC; color:#2E7099">
+            <b>History Table</b>
+        </div>
+            <div class="row justify-content-center" style="max-height:40vh; overflow: scroll;">
+                <table class="table" style="width:500px">
+                    <tr>
+                        <th class="text-center">Round</th>
+                        <th class="text-center">Your harvest</th>
+                        <th class="text-center">Your earning (Round)</th>
+                        <th class="text-center">Accumulated earnings</th>
+                    </tr>
+                    <tbody>
+                    {% for p in player.in_previous_rounds %}
+                        <tr>
+                            <td class="text-center my_style">{{p.round_number}}</td>
+                            <td class="text-center"> {{p.harvest}} tokens</td>
+                            <td class="text-center"> {{p.period_payoff_int}} tokens</td>
+                            <td class="text-center"> {{p.history_accumulated_earnings}} tokens</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+             </div>
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}

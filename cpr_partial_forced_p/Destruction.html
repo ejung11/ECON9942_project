@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    <strong>Destruction of Resource!</strong>
+{% endblock %}
+
+{% block content %}
+
+
+    <p>
+        The game has ended. The resource has been destroyed because of <strong>over-harvesting</strong>. <br> <br>
+        In other words, the total harvest <strong>{{ group.total_harvest }}</strong> exceeded the safety line
+        <strong><Font COLOR="#ff0000"> {{ group.safety }}</Font></strong> AND <br>
+        The nature's replenish power was <strong><Font COLOR="#ff0000"> {{ group.destruction }}</Font></strong> which is
+        smaller than the group's total harvest <strong>{{ group.total_harvest }}</strong>. <br>
+    </p>
+
+
+    {% next_button %}
+
+
+{% endblock %}

@@ -14,10 +14,9 @@ import random
 
 
 class Constants(BaseConstants):
-    name_in_url = 'ian_cpr_baseline'
+    name_in_url = 'ian_cpr_baseline_p'
     players_per_group = 8
     num_rounds = 3
-    instructions_template = 'cpr_partial_baseline/Instructions.html'
     endowment = 25
     conversion = 0.01
     safe = 0.25
@@ -156,12 +155,6 @@ def set_payoffs(g: Group):
 
 
 # PAGES
-class Introduction(Page):
-    @staticmethod
-    def is_displayed(group):
-        return group.round_number == 1
-
-
 class Harvest(Page):
     form_model = 'player'
     form_fields = ['harvest']
@@ -203,7 +196,6 @@ class PaymentInfo(Page):
 
 
 page_sequence = [
-    Introduction,
     Harvest,
     ResultsWaitPage,
     Results,

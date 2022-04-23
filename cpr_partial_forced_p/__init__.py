@@ -14,13 +14,13 @@ import random
 
 
 class Constants(BaseConstants):
-    name_in_url = 'ian_cpr_baseline'
+    name_in_url = 'ian_cpr_forced_p'
     players_per_group = 8
     num_rounds = 3
-    instructions_template = 'cpr_partial_baseline/Instructions.html'
     endowment = 25
     conversion = 0.01
     safe = 0.25
+    share = 0.7
 
 
 class Subsession(BaseSubsession):
@@ -86,7 +86,6 @@ def set_payoffs(g: Group):
 
     # setup group random draw
     g.destruction = random.randint(0, Constants.players_per_group * Constants.endowment)
-    print('destruction',g.destruction)
 
     for p in g.get_players():
         #Total harvest
@@ -132,9 +131,11 @@ def set_payoffs(g: Group):
         print('harvest', p.harvest)
         print('total harvest', g.total_harvest)
 
-        p.period_payoff = float(5*Constants.endowment - 5*p.harvest + 23*p.harvest - 0.25*g.total_harvest*p.harvest)
+        p.period_payoff = float(5*(Constants.endowment - p.harvest)
+                                + (1-Constants.share)*(23*p.harvest - 0.25*g.total_harvest*p.harvest)
+                                + (Constants.share / Constants.players_per_group)*((23 - 0.25*g.total_harvest)*g.total_harvest)
+                                )
         print('payoff', p.period_payoff)
-
         p.period_payoff_int = round(p.period_payoff)
 
         #Cumulative earnings for each participant
@@ -156,12 +157,6 @@ def set_payoffs(g: Group):
 
 
 # PAGES
-class Introduction(Page):
-    @staticmethod
-    def is_displayed(group):
-        return group.round_number == 1
-
-
 class Harvest(Page):
     form_model = 'player'
     form_fields = ['harvest']
@@ -203,7 +198,6 @@ class PaymentInfo(Page):
 
 
 page_sequence = [
-    Introduction,
     Harvest,
     ResultsWaitPage,
     Results,
