@@ -1,16 +1,49 @@
-{{ block title }}Introduction{{ endblock }}
+{{ block title }}Common-Pool Resource Games{{ endblock }}
 {{ block content }}
 
     <div class="card bg-light m-3">
     <div class="card-body">
-<p>
-    You are being tasked with making an investment decision with 1000 research points.
-    At the end of the experiment, all of your research points (not just your profit) will be
-    converted into real dollars and your payout will be determined by your earnings throughout the
-    experiment. The exchange rate between research points and real dollars is 0.005.
-    In other words, 1000 research points will translate into $5.
-</p>
+
+        <h4><strong>Examples: situation 1</strong></h4>
+
+        <p>
+            This is round 1 of the game. <br>
+            Let's assume that in this round, group's total harvest was <strong>40</strong>. <br>
+            Thus, the return from harvesting the resource is 23 - 0.25 * 40 = <strong> 13</strong>.
+        </p>
+
+        <p>
+            If you decided to put <strong>10 efforts</strong> to harvest. <br>
+            You will be earning <strong>10 * 13 = 130 from harvest</strong> , <strong>5 * 15 = 150 from other work</strong>. <br>
+            Thus, Your earnings in this round is <strong>280 tokens</strong>. <br>
+            And since the total harvest is <strong>less than 100</strong>, your group will continue to next round and have chance to earn more. <br>
+            Probability of ending is <strong>0%</strong>.
+        </p>
+
 </div>
+</div>
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+
+        <h4><strong>Examples: situation 2</strong></h4>
+
+        <p>
+            This is round 5 of the game.  <br>
+            Let's assume that in this round, group's total harvest was <strong>120</strong>. <br>
+            Thus, the return from harvesting the resource is 23 - 0.25 * 120 = <strong>-7</strong>.
+        </p>
+
+        <p>
+            If you decided to put <strong>10 efforts</strong> to harvest. <br>
+            You will be earning <strong>10 * (-7) = - 70 from harvest</strong>, <strong>5 * 15 = 150 from other work</strong>. <br>
+            Thus, Your earnings in this round is <strong>80 tokens</strong>. <br>
+            And since the total harvest is <strong>more than 100</strong> , the game could end at this round. <br>
+            Probability of ending is 120 / 2 = <strong>60%</strong>
+        </p>
+
+
+    </div>
 </div>
 
     {{ next_button }}

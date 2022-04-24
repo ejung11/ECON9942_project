@@ -40,10 +40,10 @@ class Player(BasePlayer):
     )
 
     gq4 = models.StringField(
-        choices=[['False', 'A.  Both Practice CPR game A and Practice CPR Game B'],
-                 ['False', 'B.  Both Real CPR game A and Real CPR Game B'],
-                 ['False', 'C.  One random between Practice CPR game A and Practice CPR Game B'],
-                 ['True', 'D.   One random between Real CPR game A and Real CPR Game B'],
+        choices=[['False', 'A.  Both CPR game A: Practice and CPR Game B: Practice'],
+                 ['False', 'B.  Both CPR game A: Real and CPR Game B: Real'],
+                 ['False', 'C.  One random between either CPR game A: Practice or CPR Game B: Practice'],
+                 ['True', 'D.   One random between either game A: Real or CPR Game B: Real'],
                  ],
         label='4. Which game is going to be paid to you at the end of the experiment?:',
         widget=widgets.RadioSelect,
@@ -135,7 +135,7 @@ class Quiz4(Page):
         for field_name in solution:
             if values[field_name] != solution[field_name]:
                 error_messages[
-                    field_name] = 'Answer is D. One random between Real CPR game A and Real CPR Game B.'
+                    field_name] = 'Answer is D. One random between either game A: Real or CPR Game B: Real'
 
         return error_messages
 
