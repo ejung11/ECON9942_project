@@ -1,0 +1,35 @@
+{{ block title }}Common-Pool Resource Games{{ endblock }}
+{{ block content }}
+
+    <div class="card bg-light m-3">
+    <div class="card-body">
+
+        <h4><strong>Rounds & Destructions</strong></h4>
+
+        <p>
+            The game can continue <strong>upto 20 rounds</strong>. But the game <strong>could end early</strong>  if the resource is unable to renew.
+        </p>
+
+        <p>
+            After each round, the system will decide whether the resource has been destroyed or not depending on total harvest from the group.
+            If the <strong>group harvested 100 efforts or less in total</strong> , the game will <strong>automatically continue</strong>  to the next round. <br>
+            But if the <strong>group harvested more than 100 efforts</strong>  then the game could end early depend on the nature's power. <br>
+            A random drawing between 0-200 will occur which will represent the regeneration power of the nature.
+            If the <strong>drawn number is less than the total harvest</strong> , the game will end.
+            In other words, the nature could not replenish the resource for the next round.
+        </p>
+
+        <p>
+            Each harvest after <strong>100</strong>  will increase the probability of ending by 0.5% starting from 50%. <br>
+            For example, if the group harvested <strong>200</strong> , then the probability of ending is <strong>100%</strong> . <br>
+            If the group harvested <strong>150</strong>, then the probability of ending is <strong>75%</strong>. <br>
+            If the group harvested <strong>100</strong>, then the probability of ending is <strong>0%</strong>.
+        </p>
+
+
+</div>
+</div>
+
+    {{ next_button }}
+
+{{ endblock }}
