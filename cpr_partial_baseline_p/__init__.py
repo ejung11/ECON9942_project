@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     num_rounds = 3
     endowment = 25
     conversion = 0.01
-    safe = 0.25
+    safe = 0.50
 
 
 class Subsession(BaseSubsession):

@@ -7,7 +7,7 @@ Instructions for the whole session
 
 
 class Constants(BaseConstants):
-    name_in_url = 'instructions_baseline'
+    name_in_url = 'instructions_general'
     players_per_group = None
     num_rounds = 1
 

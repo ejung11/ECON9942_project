@@ -20,7 +20,7 @@ class Constants(BaseConstants):
     instructions_template = 'cpr_partial_baseline/Instructions.html'
     endowment = 25
     conversion = 0.01
-    safe = 0.25
+    safe = 0.50
 
 
 class Subsession(BaseSubsession):

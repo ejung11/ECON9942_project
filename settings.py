@@ -19,7 +19,7 @@ SESSION_CONFIGS = [
         name='Pilot_25April',
         display_name='CPR game partial out-put sharing',
         num_demo_participants=8,
-        app_sequence=['instructions_baseline',
+        app_sequence=['instructions_general',
                       'cpr_partial_baseline_p',
                       'cpr_partial_baseline',
                       'cpr_partial_forced_p',
