@@ -164,8 +164,6 @@ def vars_for_admin_report(subsession):
     return dict(info=info)
 
 
-
-
 # PAGES
 class Introduction(Page):
     @staticmethod
