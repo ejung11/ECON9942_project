@@ -76,7 +76,7 @@ def creating_session(subsession):
     #set individual var: total earnings for each participant
     for p in subsession.get_players():
         if subsession.round_number == 1:
-            p.participant.vars['totalEarnings'] = 0
+            p.participant.vars['totalEarnings_ap'] = 0
 
 #Payoffs
 def set_payoffs(g: Group):
@@ -137,15 +137,15 @@ def set_payoffs(g: Group):
         p.period_payoff_int = round(p.period_payoff)
 
         #Cumulative earnings for each participant
-        p.participant.vars['totalEarnings'] += p.period_payoff_int
-        print('total earnings', p.participant.vars['totalEarnings'])
+        p.participant.vars['totalEarnings_ap'] += p.period_payoff_int
+        print('total earnings', p.participant.vars['totalEarnings_ap'])
 
         #storing history of cumulative earnings
-        p.history_accumulated_earnings = p.participant.vars['totalEarnings']
+        p.history_accumulated_earnings = p.participant.vars['totalEarnings_ap']
         print('accumulated earnings tracking', p.history_accumulated_earnings )
 
         #Cash amount
-        p.participant.vars['totalCash'] = round(p.participant.vars['totalEarnings'] * Constants.conversion, 2)
+        p.participant.vars['totalCash_ap'] = round(p.participant.vars['totalEarnings_ap'] * Constants.conversion, 2)
 
     #others harvest
     for p in g.get_players():
