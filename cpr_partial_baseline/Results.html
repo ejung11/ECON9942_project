@@ -2,14 +2,14 @@
 {% load otree %}
 
 {% block title %}
-    Results
+    <strong>Results</strong>
 {% endblock %}
 
 {% block content %}
-
+    <h4><strong>Round {{group.round_number}}</strong></h4>
 
     <table class="table-condensed" style="width:500px; margin-top:20px;">
-        <tr><td>This is Round</td><td>{{ group.round_number}}</td></tr>
+        <tr><td>In this round</td></tr>
         <tr><td>You harvested:</td><td>{{ player.harvest }} efforts</td></tr>
         <tr><td>Other participants total harvested:</td><td></td></tr>
         <tr><td></td><td>{{ player.others_harvest }} efforts</td></tr>
