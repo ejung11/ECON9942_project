@@ -73,7 +73,6 @@ ROOMS = [
         name = 'ECON9940_pilot_25April',
         display_name = 'ECON9940_pilot_25April',
         participant_label_file = '_rooms/ECON9940_pilot_25April.txt',
-        use_secure_urls = True,
     ),
 ]
 
