@@ -1,9 +1,19 @@
 {% extends "global/Page.html" %}
 {% load otree %}
-
 {% block title %}<strong>Common-Pool Resource Game A: Practice</strong> {% endblock %}
-
 {% block content %}
+
+    <p>
+        This is the practice of CPR game A.
+    </p>
+
+    <p>
+        In this session, imagine yourself as a fisherman fishing for fish or local villagers needing to find firewood.
+        Fishes and firewood are common-pool resource, anyone can come and harvest as much as they want
+        but it can be destroyed when people harvest too much.
+    </p>
+
+
 {% include Constants.instructions_template %}
 {% next_button %}
 {% endblock %}

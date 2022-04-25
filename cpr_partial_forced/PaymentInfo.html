@@ -2,17 +2,26 @@
 {% load otree %}
 
 {% block title %}
-    Final Report Page
+    Final Report Page for the CPR game B: Real
 {% endblock %}
 
 {% block content %}
 
     <div class="panel panel-default" style="margin-bottom:10px">
         <div class="panel-body">
-            <p>Thank you. This is the end of the experiment.</p>
+            <p>Thank you. This is the end of game B and the end of the experiment.</p>
             <p>Your Earnings is {{ player.participant.vars.totalEarnings_b }} tokens which is equal to <strong>${{player.participant.vars.totalCash_b}}</strong>. </p>
             <br>
-            <p>Please remain seated until your number is called. Then take your number card, and proceed to the cashier.</p>
+
+            <h5><strong>Opportunity for bonus cash</strong></h5>
+
+            <p>
+                You can earn bonus cash of <strong>$5</strong> on top of your earnings for filling out following questionnaire. <br>
+                If you wish to receive the bonus, please click "Questionnaire" button below and complete.
+            </p>
+
+            <p>need to add the button for qualtrics</p>
+            
         </div>
     </div>
 

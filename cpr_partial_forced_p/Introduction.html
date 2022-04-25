@@ -1,9 +1,28 @@
 {% extends "global/Page.html" %}
 {% load otree %}
-
-{% block title %}<strong>Common-Pool Resource Game B: Practice</strong> {% endblock %}
-
+{% block title %}<strong>Common-Pool Resource Game B: practice</strong> {% endblock %}
 {% block content %}
+
+    <p>
+        This is the practice of CPR game B.
+    </p>
+
+    <p>
+        In this session, imagine yourself as a fisherman fishing for fish or local villagers needing to find firewood.
+        Fishes and firewood are common-pool resource, anyone can come and harvest as much as they want
+        but it can be destroyed when people harvest too much.
+    </p>
+
+    <p>
+        But the following is new in this game:
+        <ul>
+            <li>Now you are <strong>sharing 70% of earnings from harvest with the people in your group</strong>. </li>
+            <li>This means that you will also <strong>receive equal amount from the group</strong>.</li>
+            <li>You will not be sharing the earning from other work.</li>
+        </ul>
+    </p>
+
+
 {% include Constants.instructions_template %}
 {% next_button %}
 {% endblock %}

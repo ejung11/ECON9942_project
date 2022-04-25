@@ -2,23 +2,25 @@
 {% load otree %}
 
 {% block title %}
-    Final Report Page
+    Final Report Page for the CPR game A: Real
 {% endblock %}
 
 {% block content %}
 
     <div class="panel panel-default" style="margin-bottom:10px">
         <div class="panel-body">
-            <p>Thank you. This is the end of the experiment.</p>
+            <p>Thank you. This is the end of game A.</p>
             <p>Your Earnings is {{ player.participant.vars.totalEarnings_a }} tokens which is equal to <strong>${{player.participant.vars.totalCash_a}}</strong>. </p>
             <br>
-            <p>Please remain seated until your number is called. Then take your number card, and proceed to the cashier.</p>
+
+            <p>
+                You will be playing another CPR game with different version shortly. Please wait for additional instruction from the experimenter.
+            </p>
+            <p>
+                Thank you.
+            </p>
         </div>
     </div>
-
-
-
-
 
 
 {% endblock %}
