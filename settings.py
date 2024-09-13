@@ -10,6 +10,13 @@ SESSION_CONFIGS = [
     ),
 
     dict(
+        name='post_survey',
+        display_name='post-survey',
+        num_demo_participants=1,
+        app_sequence=['post_survey'],
+    ),
+
+    dict(
         name='cpr_partial_forced',
         display_name='CPR game partial out-put sharing (forced)',
         num_demo_participants=2,

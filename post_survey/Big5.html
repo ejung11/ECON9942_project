@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+{{ endblock }}
+
+{% block title %}
+<div class="narrow-body" style="text-align: center;">
+    <h2>Post-Survey: Personality</h2>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<body>
+<div class="narrow-body">
+    <div class="instructions">
+        <p>
+            <b>
+            Here are a number of personality traits that may or may not apply to you.
+            Please indicate the extent to which you agree or disagree with that statement.
+            <br><br>
+            You should rate the extent to which the pair of traits applies to you,
+            even if one characteristic applies more strongly than the other.
+            </b>
+        </p>
+    </div>
+
+    <table class="table">
+        {% for field in form %}
+            <tr>
+                <td>
+                    {{ field.label }}
+                </td>
+                <td align="right">
+                    {{ field }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+
+    {% next_button %}
+</div>
+</body>
+{% endblock %}
