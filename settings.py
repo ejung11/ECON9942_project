@@ -5,14 +5,14 @@ SESSION_CONFIGS = [
     dict(
         name='cpr_partial_baseline',
         display_name='CPR game partial out-put sharing (baseline)',
-        num_demo_participants=8,
+        num_demo_participants=2,
         app_sequence=['cpr_partial_baseline'],
     ),
 
     dict(
         name='cpr_partial_forced',
         display_name='CPR game partial out-put sharing (forced)',
-        num_demo_participants=8,
+        num_demo_participants=2,
         app_sequence=['cpr_partial_forced'],
     ),
     dict(
@@ -90,7 +90,7 @@ SECRET_KEY = '5128151015026'
 
 INSTALLED_APPS = ['otree']
 
-# use_browser_bots = True
+use_browser_bots = True
 
 
 

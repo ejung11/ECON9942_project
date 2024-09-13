@@ -10,14 +10,10 @@
 
     <table class="table-condensed" style="width:500px; margin-top:20px;">
         <tr><td>In this round</td></tr>
-        <tr><td>You harvested:</td><td>{{ player.harvest }} efforts</td></tr>
+        <tr><td>You harvested:</td><td>{{ player.effort_act2 }} efforts</td></tr>
         <tr><td>Other participants total harvested:</td><td></td></tr>
-        <tr><td></td><td>{{ player.others_harvest }} efforts</td></tr>
-        <tr><td>Total harvest:</td><td>{{ group.total_harvest }} efforts</td></tr>
-
-        <tr><td colspan="2"><hr/></td></tr>
-
-        <tr><td>Probability of ending:</td><td><Font COLOR="#ff0000">{{ group.prob_ending}}</Font> %</td></tr>
+        <tr><td></td><td>{{ player.others_effort_act2 }} efforts</td></tr>
+        <tr><td>Total harvest:</td><td>{{ group.total_effort_act2 }} efforts</td></tr>
 
         <tr><td colspan="2"><hr/></td></tr>
 
@@ -47,7 +43,7 @@
                     {% for p in player.in_previous_rounds %}
                         <tr>
                             <td class="text-center my_style">{{p.round_number}}</td>
-                            <td class="text-center"> {{p.harvest}} tokens</td>
+                            <td class="text-center"> {{p.effort_act2}} tokens</td>
                             <td class="text-center"> {{p.period_payoff_int}} tokens</td>
                             <td class="text-center"> {{p.history_accumulated_earnings}} tokens</td>
                         </tr>
