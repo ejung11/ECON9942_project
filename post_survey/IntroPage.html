@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+{{ endblock }}
+
+{% block title %}
+<div class="narrow-body" style="text-align: center;">
+    <h2>Post-Survey Introduction</h2>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="narrow-body">
+    <div class="instructions">
+    <p>
+        You are now entering the post-survey section of the experiment.
+    </p>
+    <p>
+        This part of the study will ask you questions about your demographics, thoughts on decisions, and personality traits.
+    </p>
+    <p>
+        To show our appreciation for your time and effort in completing this survey, <br>
+        <strong>you will receive an additional $3</strong> if you complete the survey carefully and seriously.
+    </p>
+
+    <p>
+        Please take your time and answer the questions thoughtfully.
+    </p>
+    <br>
+    <p>
+        When you are ready, click "Next" to begin the survey.
+    </p>
+    </div>
+
+    {% next_button %}
+
+</div>
+
+
+
+{% endblock %}

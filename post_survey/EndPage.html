@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+{{ endblock }}
+
+{% block title %}
+<div class="narrow-body" style="text-align: center;">
+    <h2>End of the Experiment</h2>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="narrow-body" >
+    <div class="instructions">
+    <p>
+        This is the end of the experiment. Thank you for your participation.
+    </p>
+    <p>
+        Here is your final payoff in U.S.D.
+    </p>
+
+    <p>
+        You earned <strong>$...</strong> today.
+    </p>
+    </div>
+</div>
+{% endblock %}

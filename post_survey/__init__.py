@@ -162,8 +162,20 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
 
-    sharing_claer = models.IntegerField(
-        label="Q5) It was clear from the instructions how my earnings will be affected by sharing arrangements.",
+    tools_belief = models.IntegerField(
+        label="Q5) I believe that my guess was accurate when using guess-sliders",
+        choices=[
+            [1, 'Strongly Disagree'],
+            [2, 'Disagree'],
+            [3, 'Neutral'],
+            [4, 'Agree'],
+            [5, 'Strongly Agree'],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    sharing_clear = models.IntegerField(
+        label="Q6) It was clear from the instructions how my earnings will be affected by sharing arrangements.",
         choices=[
             [1, 'Strongly Disagree'],
             [2, 'Disagree'],
@@ -175,7 +187,7 @@ class Player(BasePlayer):
     )
 
     sharing_impact = models.IntegerField(
-        label="Q6) Sharing arrangements influenced my decisions.",
+        label="Q7) Sharing arrangements influenced my decisions.",
         choices=[
             [1, 'Strongly Disagree'],
             [2, 'Disagree'],
@@ -254,7 +266,9 @@ class Player(BasePlayer):
 
 
 # PAGES
-import json
+
+class IntroPage(Page):
+    pass
 
 class Demographics(Page):
     form_model = 'player'
@@ -275,9 +289,34 @@ class Decisions(Page):
         'earnings_clear',
         'tools_clear',
         'tools_helpful',
-        'sharing_claer',
+        'tools_belief',
+        'sharing_clear',
         'sharing_impact',
     ]
+
+    # def vars_for_template(player: Player):
+    #     # Assuming 'share' treatment can be detected via the session or player's attributes
+    #     # This depends on how you are defining the treatment.
+    #     # Replace this with actual logic to determine if the player is in the 'share' treatment.
+    #     is_share_treatment = player.session.config.get('treatment') == 'share'
+    #
+    #     return dict(is_share_treatment=is_share_treatment)
+    #
+    # def get_form_fields(player: Player):
+    #     # Default questions
+    #     form_fields = [
+    #         'decisions_clear',
+    #         'earnings_clear',
+    #         'tools_clear',
+    #         'tools_helpful',
+    #         'tools_belief',
+    #     ]
+    #
+    #     # Add 'sharing_clear' and 'sharing_impact' if in 'share' treatment
+    #     if player.session.config.get('treatment') == 'share':
+    #         form_fields += ['sharing_clear', 'sharing_impact']
+    #
+    #     return form_fields
 
 class Big5(Page):
     form_model = 'player'
@@ -294,8 +333,18 @@ class Big5(Page):
         'big5_openness_r',
     ]
 
+class EndPage(Page):
+    pass
+
+    # def vars_for_template(player: Player):
+    #     # Convert payoff to USD. Assuming the payoff is stored in a 'payoff' attribute.
+    #     usd_payoff = player.payoff.to_real_world_currency(player.session)
+    #     return dict(usd_payoff=usd_payoff)
+
 page_sequence = [
+    IntroPage,
     Demographics,
     Decisions,
     Big5,
+    EndPage,
 ]
