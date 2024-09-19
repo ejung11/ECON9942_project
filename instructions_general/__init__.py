@@ -2,7 +2,8 @@ from otree.api import *
 
 
 doc = """
-Instructions for the whole session
+This is the general instructions app for the project "Managing the Tragedy of the Commons: A Partial Output-Sharing Approach"
+This will include instructions for the whole session.
 """
 
 

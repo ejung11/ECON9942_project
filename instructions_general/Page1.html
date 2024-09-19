@@ -1,5 +1,17 @@
-{{ block title }}Introduction{{ endblock }}
+{% extends "global/Page.html" %}
+{% load static %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+{{ endblock }}
+
+
+{{ block title }}
+    Introduction
+{{ endblock }}
+
 {{ block content }}
+
 
     <div class="card bg-light m-3">
     <div class="card-body">
@@ -39,6 +51,8 @@
 
 </div>
 </div>
+
+    <br>
 
     {{ next_button }}
 

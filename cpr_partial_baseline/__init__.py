@@ -27,26 +27,26 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    total_effort_act2 = models.IntegerField()
+    total_effort_act_b = models.IntegerField()
 
 
 
 class Player(BasePlayer):
     # Decision for Activity 2
-    effort_act2 = models.IntegerField(
+    effort_act_b = models.IntegerField(
         min=0,
         max=Constants.endowment,
         label="How much effort do you want to allocate to Activity 2?"
     )
 
     # Guess on others' average decision
-    guess_act2 = models.IntegerField(
+    guess_act_b = models.IntegerField(
         min=0,
         max=Constants.endowment,
         label="Your guess on others' average effort allocation to Activity 2"
     )
 
-    others_effort_act2 = models.IntegerField()
+    others_effort_act_b = models.IntegerField()
     history_accumulated_earnings = models.FloatField()
     period_payoff = models.FloatField()
     period_payoff_int = models.IntegerField()
@@ -71,11 +71,11 @@ def creating_session(subsession):
 
 #Payoffs
 def set_payoffs(g: Group):
-    g.total_effort_act2 = sum([p.effort_act2 for p in g.get_players()])
+    g.total_effort_act_b = sum([p.effort_act_b for p in g.get_players()])
 
     for p in g.get_players():
-        individual_effort = p.effort_act2
-        group_total_effort = g.total_effort_act2
+        individual_effort = p.effort_act_b
+        group_total_effort = g.total_effort_act_b
 
         # Logically break down the payoff calculation
         base_endowment_value = 5 * Constants.endowment
@@ -90,7 +90,7 @@ def set_payoffs(g: Group):
         p.participant.vars['totalCash_a'] = round(p.participant.vars['totalEarnings_a'] * Constants.conversion, 2)
 
         # Log effort of others
-        p.others_effort_act2 = group_total_effort - individual_effort
+        p.others_effort_act_b = group_total_effort - individual_effort
 
 # Old version
 # def set_payoffs(g: Group):
@@ -160,7 +160,7 @@ class Introduction(Page):
 
 class Harvest(Page):
     form_model = 'player'
-    form_fields = ['effort_act2', 'guess_act2']
+    form_fields = ['effort_act_b', 'guess_act_b']
 
 
 class ResultsWaitPage(WaitPage):

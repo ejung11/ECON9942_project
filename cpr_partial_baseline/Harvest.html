@@ -19,18 +19,18 @@
         and have to allocate these into two activities.
         <br>
         <ul>
-            <li><strong>  Activity 1 </strong>: It gives a fixed return per effort. </li>
-            <li><strong>  Activity 2 </strong>: It gives a variable return per effort. <br>
-                                                Depending on the total effort allocated to Activity 2.</li>
+            <li><strong>  Activity A </strong>: It gives a fixed return per effort. </li>
+            <li><strong>  Activity B </strong>: It gives a variable return per effort. <br>
+                                                Depending on the total effort allocated to Activity B.</li>
         </ul>
 
         <br>
-        You will choose how much effort you want to allocate to Activity 2.
-        Then, your effort allocation to Activity 1 is automatically decided by 25 - Activity 2 allocation.
+        You will choose how much effort you want to allocate to Activity B.
+        Then, your effort allocation to Activity A is automatically decided by 25 - Activity B allocation.
     </p>
 
     <p>
-        Use slider to indicate how much do you want to allocate to Activity 2.  <br>
+        Use slider to indicate how much do you want to allocate to Activity B.  <br>
     </p>
 
     <div class="decision-1-subsection">
@@ -61,8 +61,8 @@
 
     <!-- Preview of the Results and Earnings -->
     <h4>Preview of Your Earnings:</h4>
-    <p>Earnings from Activity A: <strong><span id="earnings_activity1">0</span></strong> points</p>
-    <p>Earnings from Activity B: <strong><span id="earnings_activity2">0</span></strong> points</p>
+    <p>Earnings from Activity A: <strong><span id="earnings_activity_A">0</span></strong> points</p>
+    <p>Earnings from Activity B: <strong><span id="earnings_activity_B">0</span></strong> points</p>
     <p>Total Earnings: <strong><span id="total_earnings">0</span></strong> points</p>
     </div>
 
@@ -72,8 +72,8 @@
 
     {% include Constants.instructions_template %}
 
-    <input type="hidden" name="effort_act2" id="player_effort_act2" value="0">
-    <input type="hidden" name="guess_act2" id="player_guess_act2" value="0">
+    <input type="hidden" name="effort_act_b" id="player_effort_act_b" value="0">
+    <input type="hidden" name="guess_act_b" id="player_guess_act_b" value="0">
 
     </div>
     </body>
@@ -85,27 +85,27 @@
 
             // Constants for earnings calculations
             const endowment = 25;  // Initial Endowment
-            const return_act1 = 5;  // Fixed return per effort for Activity 1
-            const ind_return_act2 = 20;  // Return per effort for Activity 2
+            const return_act_a = 5;  // Fixed return per effort for Activity 1
+            const ind_return_act_b = 20;  // Return per effort for Activity 2
             const ext_cost = 0.1171;  // Externality cost
             const group_size = {{Constants.players_per_group}};
 
             // Function to calculate and update total earnings based on the sliders' values
             function updateTotalEarnings() {
-                let activity2Effort = parseInt(document.getElementById('player_effort_act2').value);
-                let guessEffort = parseInt(document.getElementById('player_guess_act2').value);
+                let activityBEffort = parseInt(document.getElementById('player_effort_act_b').value);
+                let guessEffort = parseInt(document.getElementById('player_guess_act_b').value);
 
-                // Earnings from Activity 1 and Activity 2 (already calculated)
-                let earningsActivity1 = return_act1 * ( endowment - activity2Effort);
-                let earningsActivity2_float = activity2Effort *
-                                        (ind_return_act2 - ext_cost * (guessEffort * ((group_size - 1) + activity2Effort)));
-                let earningsActivity2 = parseInt(earningsActivity2_float);
+                // Earnings from Activity A and Activity B (already calculated)
+                let earningsActivityA = return_act_a * ( endowment - activityBEffort);
+                let earningsActivityB_float = activityBEffort *
+                                        (ind_return_act_b - ext_cost * (guessEffort * ((group_size - 1) + activityBEffort)));
+                let earningsActivityB = parseInt(earningsActivityB_float);
 
-                document.getElementById('earnings_activity1').textContent = earningsActivity1;
-                document.getElementById('earnings_activity2').textContent = earningsActivity2;
+                document.getElementById('earnings_activity_A').textContent = earningsActivityA;
+                document.getElementById('earnings_activity_B').textContent = earningsActivityB;
 
                 // Calculate and display total earnings
-                let totalEarnings = earningsActivity1 + earningsActivity2;
+                let totalEarnings = earningsActivityA + earningsActivityB;
                 document.getElementById('total_earnings').textContent = totalEarnings;
             };
 
@@ -145,7 +145,7 @@
             let sliderValue = parseInt(values[handle]);  // Convert slider value to integer
 
             // Update hidden field with the integer slider value for decision
-            document.getElementById('player_effort_act2').value = sliderValue;
+            document.getElementById('player_effort_act_b').value = sliderValue;
 
             // Display the value on the page in real-time
             document.getElementById('slider_value_display').textContent = sliderValue;
@@ -160,7 +160,7 @@
             let guessValue = parseInt(values[handle]);  // Convert slider value to integer
 
             // Update hidden field with the integer slider value for guess
-            document.getElementById('player_guess_act2').value = guessValue;
+            document.getElementById('player_guess_act_b').value = guessValue;
 
             // Display the value on the page in real-time
             document.getElementById('guess_value_display').textContent = guessValue;

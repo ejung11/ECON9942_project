@@ -1,4 +1,14 @@
-{{ block title }}Common-Pool Resource Games{{ endblock }}
+{% extends "global/Page.html" %}
+{% load static %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+{{ endblock }}
+
+{{ block title }}
+Common-Pool Resource Games
+{{ endblock }}
+
 {{ block content }}
 
     <div class="card bg-light m-3">

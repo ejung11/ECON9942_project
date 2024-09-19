@@ -20,24 +20,36 @@ dict(
         name='consent',
         display_name='consent',
         num_demo_participants=2,
-        app_sequence=['consent', 'cpr_partial_baseline'],
+        app_sequence=['consent'],
+    ),
+
+dict(
+        name='instructions',
+        display_name='General Instructions',
+        num_demo_participants=1,
+        app_sequence=[
+            'instructions_general',
+
+
+                      ],
     ),
 
     dict(
-        name='cpr_partial_forced',
+        name='cpr_partial_60',
         display_name='CPR game partial out-put sharing (forced)',
         num_demo_participants=2,
-        app_sequence=['cpr_partial_forced'],
+        app_sequence=['cpr_partial_60'],
     ),
+
     dict(
-        name='Pilot_25April',
+        name='Pilot',
         display_name='CPR game partial out-put sharing',
         num_demo_participants=8,
         app_sequence=['instructions_general',
                       'cpr_partial_baseline_p',
                       'cpr_partial_baseline',
                       'cpr_partial_forced_p',
-                      'cpr_partial_forced',],
+                      'cpr_partial_60',],
     ),
     #
     #
