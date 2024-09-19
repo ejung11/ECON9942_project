@@ -1,0 +1,103 @@
+{% extends "global/Page.html" %}
+{% load static %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+    <style>
+       h5 {
+           text-decoration: underline;
+       }
+   </style>
+{{ endblock }}
+
+{% block title %}
+    Consent Form
+{% endblock %}
+
+{% block content %}
+
+<div style="text-align: center;">
+    <h4>Georgia State University</h4>
+    <h4>Informed Consent</h4>
+</div>
+<br>
+<div>
+    <p><strong>Title:</strong> Common-Pool Resources and Partial Output-Sharing</p>
+    <p><strong>Principal Investigator:</strong> Professor James C. Cox, Georgia State University</p>
+    <p><strong>Co-Investigator:</strong> Eye Eoun (Ian) Jung, Georgia State University</p>
+    <p><strong>Sponsor:</strong> AYS Dissertation Fellowship</p>
+
+    <h5>Introduction and Key Information</h5>
+    <p>We invite you to take part in a research study. You will decide if you would like to take part in the study. Your participation in the study will last no more than two hours on one day.</p>
+    <p>We will ask you to: allocate efforts between two activities. If you do not wish to take part in this study, you can terminate your participation at any time.</p>
+
+    <h5>Purpose</h5>
+    <p>The purpose of this study is to understand how individuals make decisions in common-pool resource environments and to assess the impact of partial output-sharing arrangements on resource use.</p>
+    <p>You are invited to participate because you have registered on the Experimental Economics Center’s website as someone interested in participating in experiments.</p>
+    <p>We will invite up to 200 people to participate in this study.</p>
+
+    <h5>Procedures</h5>
+    <p>If you decide to take part in this study, you will:</p>
+    <ul>
+        <li>You will allocate efforts between two activities throughout multiple rounds:
+            <ul>
+                <li><strong>Activity A (Fixed Return):</strong> Each effort invested yields a fixed amount.</li>
+                <li><strong>Activity B (Variable Return):</strong> Each effort invested yields a return that depends on the total efforts invested by all participants in your group.</li>
+            </ul>
+        </li>
+        <li>Your money payoff will be determined by your responses and the responses of anonymous members in your group.</li>
+        <li>Interact anonymously with other participants; you will not know their identities, and they will not know yours.</li>
+        <li>Fill out a questionnaire.</li>
+        <li>You will participate by entering responses on a computer in the lab of the Experimental Economics Center.</li>
+    </ul>
+
+    <h5>Future Research</h5>
+    <p>We will not retain any information that could personally identify you. We may use your anonymous responses in the experiment for future research. We will not ask for consent from you if we do this.</p>
+
+    <h5>Risks</h5>
+    <p>You will not have any more risks than you would in a normal day of life.</p>
+
+    <h5>Benefits</h5>
+    <p>This study is not designed to benefit you personally. We hope to gain information about how individuals make decisions in common-pool resource environments and to assess the impact of partial output-sharing arrangements on resource use.</p>
+
+    <h5>Alternatives</h5>
+    <p>The alternative to taking part in this study is to not take part in the study.</p>
+
+    <h5>Compensation</h5>
+    <p>If you decide to participate, you will receive compensation in U.S. dollars at the end of the experiment session. The amount of compensation will be determined by your decisions and the decisions of anonymous members in your group.</p>
+
+    <h5>Voluntary Participation and Withdrawal</h5>
+    <p>You do not have to be in this study. If you decide to be in the study and change your mind, you can drop out at any time.</p>
+
+    <h5>Confidentiality</h5>
+    <p>We will keep your records private to the extent required by law. The following people and groups will have access to the information you provide:</p>
+    <ul>
+        <li>The study PI and Co-PI and members of their research team.</li>
+        <li>GSU Institutional Review Board</li>
+        <li>Office for Human Research Protection (OHRP)</li>
+        <li>GSU Research Services and Administration</li>
+    </ul>
+    <p>We will use a study participant number rather than your name or other personally-identifying information in study records.</p>
+    <p>We will store the information you provide on password and firewall-protected cloud servers.</p>
+    <p>When we present or publish the results of this study, we will not use information that may identify you.</p>
+
+    <h5>Contact Information</h5>
+    <p>You can contact Eye Eoun (Ian) Jung at 213-706-0422 or <a href="mailto:ejung11@gsu.edu">ejung11@gsu.edu</a>:</p>
+    <ul>
+        <li>If you have questions about the study or your part in it</li>
+        <li>If you have questions, concerns, or complaints about the study</li>
+    </ul>
+    <p>The IRB at Georgia State University reviews all research that involves human participants. You can contact the IRB if you would like to speak to someone who is not involved directly with the study. You can contact the IRB for questions, concerns, problems, information, input, or questions about your rights as a research participant. Contact the IRB at 404-413-3500 or <a href="mailto:irb@gsu.edu">irb@gsu.edu</a>.</p>
+
+    <h5>Consent</h5>
+    <p>You can save a copy of this Consent Form for your records.</p>
+    <p>If you are willing to be in this research study, please click on the button below on your screen.</p>
+</div>
+
+<form method="post">
+    <button type="submit" class="btn btn-success">
+        I Consent to Participate
+    </button>
+</form>
+
+{% endblock %}

@@ -16,6 +16,13 @@ SESSION_CONFIGS = [
         app_sequence=['post_survey'],
     ),
 
+dict(
+        name='consent',
+        display_name='consent',
+        num_demo_participants=2,
+        app_sequence=['consent', 'cpr_partial_baseline'],
+    ),
+
     dict(
         name='cpr_partial_forced',
         display_name='CPR game partial out-put sharing (forced)',
