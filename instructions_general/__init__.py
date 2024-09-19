@@ -52,7 +52,7 @@ class Player(BasePlayer):
 
 
 # PAGES
-class Page1(Page):
+class Introduction(Page):
     pass
 
 
@@ -146,7 +146,7 @@ class End(Page):
 
 
 page_sequence = [
-    Page1,
+    Introduction,
     Page2,
     Page3,
     Page4,
