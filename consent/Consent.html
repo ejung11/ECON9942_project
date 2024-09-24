@@ -2,7 +2,7 @@
 {% load static %}
 
 {{ block style }}
-   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+   <link rel="stylesheet" type="text/css" href="{{ _static 'global/global_styles.css' }}"/>
     <style>
        h5 {
            text-decoration: underline;
@@ -11,7 +11,9 @@
 {{ endblock }}
 
 {% block title %}
+<div class="narrow-body">
     Consent Form
+</div>
 {% endblock %}
 
 {% block content %}
@@ -21,10 +23,10 @@
     <h4>Informed Consent</h4>
 </div>
 <br>
-<div>
+<div class="narrow-body">
     <p><strong>Title:</strong> Common-Pool Resources and Partial Output-Sharing</p>
     <p><strong>Principal Investigator:</strong> Professor James C. Cox, Georgia State University</p>
-    <p><strong>Co-Investigator:</strong> Eye Eoun (Ian) Jung, Georgia State University</p>
+    <p><strong>Student-PI:</strong> Eye Eoun (Ian) Jung, Georgia State University</p>
     <p><strong>Sponsor:</strong> AYS Dissertation Fellowship</p>
 
     <h5>Introduction and Key Information</h5>
@@ -82,22 +84,29 @@
     <p>When we present or publish the results of this study, we will not use information that may identify you.</p>
 
     <h5>Contact Information</h5>
-    <p>You can contact Eye Eoun (Ian) Jung at 213-706-0422 or <a href="mailto:ejung11@gsu.edu">ejung11@gsu.edu</a>:</p>
+    <p>
+        You can contact Professor James C. Cox at 404-413-0200 or <a href="mailto:jccox@gsu.edu">jccox@gsu.edu</a>:
+    </p>
     <ul>
         <li>If you have questions about the study or your part in it</li>
         <li>If you have questions, concerns, or complaints about the study</li>
     </ul>
-    <p>The IRB at Georgia State University reviews all research that involves human participants. You can contact the IRB if you would like to speak to someone who is not involved directly with the study. You can contact the IRB for questions, concerns, problems, information, input, or questions about your rights as a research participant. Contact the IRB at 404-413-3500 or <a href="mailto:irb@gsu.edu">irb@gsu.edu</a>.</p>
+    <p>
+    The IRB at Georgia State University reviews all research that involves human participants.
+    You can contact the IRB if you would like to speak to someone who is not involved directly with the study.
+    You can contact the IRB for questions, concerns, problems, information, input, or questions about your rights as a research participant.
+    Contact the IRB at 404-413-3500 or <a href="mailto:irb@gsu.edu">irb@gsu.edu</a>.
+    </p>
 
     <h5>Consent</h5>
     <p>You can save a copy of this Consent Form for your records.</p>
     <p>If you are willing to be in this research study, please click on the button below on your screen.</p>
-</div>
+
 
 <form method="post">
     <button type="submit" class="btn btn-success">
         I Consent to Participate
     </button>
 </form>
-
+</div>
 {% endblock %}
