@@ -22,13 +22,15 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+    consent = models.StringField(
+        initial=False,
+    )
 
 
 # PAGES
 class Consent(Page):
     form_model = 'player'
-    form_fields = []
+    form_fields = ['consent']
 
 class ConsentWaitPage(WaitPage):
     pass

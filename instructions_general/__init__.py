@@ -56,22 +56,6 @@ class Introduction(Page):
     pass
 
 
-class Page2(Page):
-    pass
-
-
-class Page3(Page):
-    pass
-
-
-class Page4(Page):
-    pass
-
-
-class Example(Page):
-    pass
-
-
 class Quiz1(Page):
     form_model = 'player'
     form_fields = ['gq1']
@@ -147,13 +131,4 @@ class End(Page):
 
 page_sequence = [
     Introduction,
-    Page2,
-    Page3,
-    Page4,
-    Example,
-    Quiz1,
-    Quiz2,
-    Quiz3,
-    Quiz4,
-    End
 ]

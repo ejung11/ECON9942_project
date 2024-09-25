@@ -51,6 +51,17 @@ dict(
                       'cpr_partial_forced_p',
                       'cpr_partial_60',],
     ),
+
+dict(
+        name='testing',
+        display_name='testing',
+        num_demo_participants=2,
+        app_sequence=[
+            'consent',
+            'instructions_general',
+            'post_survey',
+                      ],
+    ),
     #
     #
     # dict(

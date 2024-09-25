@@ -2,7 +2,7 @@
 {% load static %}
 
 {{ block style }}
-   <link rel="stylesheet" type="text/css" href="{{ _static 'global/global_styles.css' }}"/>
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
     <style>
        h5 {
            text-decoration: underline;
@@ -102,11 +102,11 @@
     <p>You can save a copy of this Consent Form for your records.</p>
     <p>If you are willing to be in this research study, please click on the button below on your screen.</p>
 
-
 <form method="post">
-    <button type="submit" class="btn btn-success">
-        I Consent to Participate
-    </button>
-</form>
+        <input type="hidden" name="consent" value="True">
+        <button type="submit" class="btn btn-success">
+            I Consent to Participate
+        </button>
+    </form>
 </div>
 {% endblock %}
