@@ -4,6 +4,9 @@
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{{ static 'global/nouislider.css' }}"/>
     <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 {% endblock %}
 
 {% block title %}
@@ -13,6 +16,15 @@
 {% block content %}
     <body>
     <div class="narrow-body">
+         <!-- Collapsible Rules Section -->
+        <button class="btn btn-info mt-3" type="button" data-toggle="collapse" data-target="#rulesCollapse" aria-expanded="false" aria-controls="rulesCollapse">
+            Show/Hide Rules
+        </button>
+
+        <div class="collapse mt-3" id="rulesCollapse">
+            {% include Constants.instructions_template %}
+        </div>
+
     <p>
         You are in a group of {{ Constants.players_per_group }} players. <br>
         You are given an endowment of <strong>  {{ Constants.endowment }} efforts </strong>
@@ -20,13 +32,12 @@
         <br>
         <ul>
             <li><strong>  Activity A </strong>: It gives a fixed return per effort. </li>
-            <li><strong>  Activity B </strong>: It gives a variable return per effort. <br>
+            <li><strong>  Activity B </strong>: It gives a variable return per effort.
                                                 Depending on the total effort allocated to Activity B.</li>
         </ul>
 
-        <br>
         You will choose how much effort you want to allocate to Activity B.
-        Then, your effort allocation to Activity A is automatically decided by 25 - Activity B allocation.
+        Then, your effort allocation to Activity A is automatically decided by <strong>25 - Activity B</strong> allocation.
     </p>
 
     <p>
@@ -70,8 +81,6 @@
 
     {% next_button %}
 
-    {% include Constants.instructions_template %}
-
     <input type="hidden" name="effort_act_b" id="player_effort_act_b" value="0">
     <input type="hidden" name="guess_act_b" id="player_guess_act_b" value="0">
 
@@ -80,7 +89,11 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script src="{% static 'global/nouislider.js' %}"></script>
+
+
     <script>
 
             // Constants for earnings calculations

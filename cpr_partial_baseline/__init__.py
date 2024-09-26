@@ -14,10 +14,10 @@ import random
 
 
 class Constants(BaseConstants):
-    name_in_url = 'ian_cpr_baseline'
+    name_in_url = 'cpr_baseline'
     players_per_group = 2
     num_rounds = 10
-    instructions_template = 'cpr_partial_baseline/Instructions.html'
+    instructions_template = 'cpr_partial_baseline/rules.html'
     endowment = 25
     conversion = 0.01
 
@@ -157,6 +157,9 @@ class Introduction(Page):
     def is_displayed(group):
         return group.round_number == 1
 
+class Example(Page):
+    pass
+
 
 class Harvest(Page):
     form_model = 'player'
@@ -184,6 +187,7 @@ class PaymentInfo(Page):
 
 page_sequence = [
     Introduction,
+    Example,
     Harvest,
     ResultsWaitPage,
     Results,

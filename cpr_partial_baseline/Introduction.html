@@ -1,19 +1,74 @@
 {% extends "global/Page.html" %}
-{% load otree %}
-{% block title %}<strong>Common-Pool Resource Game A: Real</strong> {% endblock %}
+{% load static %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+    <style>
+       h5 {
+           text-decoration: underline;
+       }
+   </style>
+{{ endblock }}
+
+{% block title %}
+<strong>Game 1: Instructions</strong>
+{% endblock %}
+
+
 {% block content %}
 
+<div class="narrow-body">
+
+    <div class="instructions-subheading">Settings</div>
     <p>
-        This is the real game of CPR game A.
+        You will be playing an <strong>effort allocation game</strong> in a <strong>group of 8 people</strong>.
+        In each round, you will decide how to allocate efforts between two different activities.
+        Each round, you are endowed with <strong>25 efforts</strong> and must decide how many to allocate
+        to <strong>Activity A</strong> and <strong>Activity B</strong>.
+    </p>
+
+    <ul>
+        <li>
+            <strong>Activity A</strong>: For each effort allocated to Activity A, you will receive a <strong>fixed return of 5 ECUs</strong>.
+        </li>
+        <li>
+            <strong>Activity B</strong>: The return on efforts allocated to Activity B is <strong>variable</strong>
+            and depends on the <strong>total efforts allocated by the entire group, including yours</strong>.
+
+            <br> <br>
+            The return for each effort allocated to Activity B is:
+            <br>
+            <p>
+                <strong>20 - 0.1171 × (group's total effort allocated to Activity B) ECUs per effort</strong>
+            </p>
+        </li>
+    </ul>
+    <br>
+    <p>
+        Note that the return from Activity B <b><span class="ecu">decreases</span></b>
+        as the total efforts allocated to Activity B by the group <b><span class="ecu">increases</span></b>.
     </p>
 
     <p>
-        In this session, imagine yourself as a fisherman fishing for fish or local villagers needing to find firewood.
-        Fishes and firewood are common-pool resource, anyone can come and harvest as much as they want
-        but it can be destroyed when people harvest too much.
+        Your earnings for each round will depend on both <strong>your own decisions</strong>
+        and the decisions of <strong>others in your group</strong>.
     </p>
 
 
-{% include Constants.instructions_template %}
-{% next_button %}
+    <div class="instructions-subheading">Multiple Rounds</div>
+    <p>The game consists of <strong>10 decision rounds</strong>. In each round, you will face the same decision task, where you will allocate efforts between Activity A and Activity B.</p>
+
+
+    <div class="instructions-subheading">Earnings</div>
+    <p>After everyone has submitted their decisions, the earnings for the round will be calculated and shown to you.</p>
+    <ul>
+        <li><strong>Earnings from Activity A</strong></li>
+        <li><strong>Earnings from Activity B</strong></li>
+    </ul>
+    <p>Your final earnings will be the sum of your earnings across all 10 rounds.</p>
+
+    {% next_button %}
+
+</div>
+
 {% endblock %}

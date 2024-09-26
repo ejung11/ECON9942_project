@@ -17,7 +17,7 @@ class Constants(BaseConstants):
     name_in_url = 'ian_cpr_baseline_p'
     players_per_group = 8
     num_rounds = 20
-    instructions_template = 'cpr_partial_baseline_p/Instructions.html'
+    instructions_template = 'cpr_partial_baseline_p/rules.html'
     endowment = 25
     conversion = 0.01
     safe = 0.50

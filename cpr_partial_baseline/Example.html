@@ -1,0 +1,104 @@
+{% extends "global/Page.html" %}
+{% load static %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+{{ endblock }}
+
+{{ block title }}
+    Examples
+{{ endblock }}
+
+{{ block content }}
+
+<div class="narrow-body">
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+
+        <div class="instructions-subheading">Situation 1</div>
+
+        <p>
+            This is round 1 of the game. <br>
+            Assume the group's total allocation to Activity B is <strong>60 efforts</strong>.
+            <br> <br>
+            The return for each effort allocated to Activity B will be:
+            <br>
+             <strong>20 - 0.1171 × 60 = 12.97 ECUs per effort</strong>
+        </p>
+
+        <p>
+            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B will be:
+            <br>
+            <strong>10 × 12.97 = 129.7 ≈ 130 ECUs</strong>
+        </p>
+
+        <p>
+            For your remaining <strong>15 efforts</strong> allocated to Activity A, your earnings from Activity A will be:
+            <br>
+            <strong>15 × 5 = 75 ECUs</strong>
+        </p>
+
+        <p>
+            Thus, your total earnings for this round will be:
+            <br>
+            <strong>130 + 75 = 205 ECUs</strong>
+        </p>
+
+    </div>
+</div>
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+
+        <div class="instructions-subheading">Situation 2</div>
+
+        <p>
+            This is round 5 of the game.
+            <br>
+            Assume the group's total allocation to Activity B is <strong>120 efforts</strong>.
+            <br> <br>
+            The return for each effort allocated to Activity B will be:
+            <br>
+            <strong>20 - 0.1171 × 120 = 5.95 ECUs per effort</strong>
+        </p>
+
+        <p>
+            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B will be:
+            <br>
+            <strong>10 × 5.95 = 59.5 ≈ 60 ECUs</strong>
+        </p>
+
+        <p>
+            For your remaining <strong>15 efforts</strong> allocated to Activity A, your earnings from Activity A will be:
+            <br>
+            <strong>15 × 5 = 75 ECUs</strong>
+        </p>
+
+        <p>
+            Thus, your total earnings for this round will be:
+            <br>
+            <strong>60 + 75 = 135 ECUs</strong>
+        </p>
+
+    </div>
+
+</div>
+
+    <div class="d-flex ">
+
+
+<!--    <button class="btn btn-primary mr-3" type="button" style="width: 100px; height: 38px;" onclick="window.history.back();">-->
+<!--        Previous-->
+<!--    </button>-->
+
+
+    <div style="width: 150px; height: 50px;">
+        {{ next_button }}
+    </div>
+
+    </div>
+
+</div>
+
+{{ endblock }}
