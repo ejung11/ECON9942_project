@@ -9,6 +9,13 @@ SESSION_CONFIGS = [
         app_sequence=['cpr_partial_baseline'],
     ),
 
+dict(
+        name='intro_baseline',
+        display_name='baseline_intro',
+        num_demo_participants=1,
+        app_sequence=['intro_baseline'],
+    ),
+
     dict(
         name='post_survey',
         display_name='post-survey',
@@ -59,6 +66,7 @@ dict(
         app_sequence=[
             'consent',
             'instructions_general',
+            'intro_baseline',
             'post_survey',
                       ],
     ),

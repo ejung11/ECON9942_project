@@ -1,0 +1,110 @@
+{% extends "global/Page.html" %}
+{% load static %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+{{ endblock }}
+
+{{ block title }}
+    Check Your Understanding
+{{ endblock }}
+
+{{ block content }}
+
+<div class="narrow-body">
+        <p>
+        Here are some quizzes to ensure your understanding of the instruction.
+        Please answer each question carefully.
+        </p>
+
+<div class="container">
+
+    <form method="post">
+
+        <!-- Question 1 -->
+        <div class="form-group">
+            <label>{{ form.kc1.label }}</label>
+            {{ form.kc1 }}
+            {% if form.kc1.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc1.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Question 2 -->
+        <div class="form-group">
+            <label>{{ form.kc2.label }}</label>
+            {{ form.kc2 }}
+            {% if form.kc2.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc2.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Question 3 -->
+        <div class="form-group">
+            <label>{{ form.kc3.label }}</label>
+            {{ form.kc3 }}
+            {% if form.kc3.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc3.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Question 4 -->
+        <div class="form-group">
+            <label>{{ form.kc4.label }}</label>
+            {{ form.kc4 }}
+            {% if form.kc4.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc4.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Question 5 -->
+        <div class="form-group">
+            <label>{{ form.kc5.label }}</label>
+            {{ form.kc5 }}
+            {% if form.kc5.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc5.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Question 6 -->
+        <div class="form-group">
+            <label>{{ form.kc6.label }}</label>
+            {{ form.kc6 }}
+            {% if form.kc6.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc6.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Question 7 -->
+        <div class="form-group">
+            <label>{{ form.kc7.label }}</label>
+            {{ form.kc7 }}
+            {% if form.kc7.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc7.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+    </form>
+
+</div>
+
+<br>
+
+    {{ next_button }}
+
+</div>
+
+{{ endblock }}

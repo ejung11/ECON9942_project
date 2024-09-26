@@ -52,6 +52,8 @@ class Player(BasePlayer):
     period_payoff_int = models.IntegerField()
 
 
+
+
 #FUNCTIONS
 #Round setup
 def creating_session(subsession):
@@ -151,16 +153,6 @@ def vars_for_admin_report(subsession):
 
 
 # PAGES
-class Introduction(Page):
-
-    @staticmethod
-    def is_displayed(group):
-        return group.round_number == 1
-
-class Example(Page):
-    pass
-
-
 class Harvest(Page):
     form_model = 'player'
     form_fields = ['effort_act_b', 'guess_act_b']
@@ -186,8 +178,6 @@ class PaymentInfo(Page):
 
 
 page_sequence = [
-    Introduction,
-    Example,
     Harvest,
     ResultsWaitPage,
     Results,
