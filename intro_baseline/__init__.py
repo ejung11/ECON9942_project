@@ -89,7 +89,7 @@ class Instructions(Page):
     pass
 
 
-class Example(WaitPage):
+class Example(Page):
     pass
 
 
