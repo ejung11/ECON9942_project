@@ -17,12 +17,23 @@
     <p>
         This is the end of the experiment. Thank you for your participation.
     </p>
+
+    <p>
+        Here is the summary for your earnings today.
+    </p>
+
+    <p>Your Earnings in Part 1 is <strong>{{ player.participant.vars.totalEarnings_a }} ECUs</strong>. </p>
+    <p>Your Earnings in Part 2 is <strong>{{ player.participant.vars.totalEarnings_b }} ECUs</strong>. </p>
+    <p>Your Earnings in Total is <strong>{{ player.participant.vars.totalEarnings }} ECUs</strong>. </p>
+    <p>Total Earnings converted to U.S.D <strong>${{ player.participant.vars.totalCash }}</strong>. </p>
+    <p>For completing the post-survey, <strong>$3</strong>. </p>
+
     <p>
         Here is your final payoff in U.S.D.
     </p>
 
     <p>
-        You earned <strong>$...</strong> today.
+        You earned <strong>${{ player.participant.vars.finalCash }}</strong>.  today.
     </p>
     </div>
 </div>

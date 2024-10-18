@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     num_rounds = 10
     instructions_template = 'cpr_partial_baseline/rules.html'
     endowment = 25
-    conversion = 0.01
+    conversion = 0.0025
 
 
 class Subsession(BaseSubsession):
@@ -69,7 +69,7 @@ def creating_session(subsession):
     #set individual var: total earnings for each participant
     for p in subsession.get_players():
         if subsession.round_number == 1:
-            p.participant.vars['totalEarnings_a'] = 0
+            p.participant.vars['totalEarnings_b'] = 0
 
 #Payoffs
 def set_payoffs(g: Group):
@@ -87,9 +87,12 @@ def set_payoffs(g: Group):
         p.period_payoff = float(base_endowment_value - 5 * individual_effort + individual_contribution - externality_cost)
         p.period_payoff_int = round(p.period_payoff)
 
-        p.participant.vars['totalEarnings_a'] += p.period_payoff_int
-        p.history_accumulated_earnings = p.participant.vars['totalEarnings_a']
-        p.participant.vars['totalCash_a'] = round(p.participant.vars['totalEarnings_a'] * Constants.conversion, 2)
+        p.participant.vars['totalEarnings_b'] += p.period_payoff_int
+        p.history_accumulated_earnings = p.participant.vars['totalEarnings_b']
+
+        p.participant.vars['totalEarnings'] = p.participant.vars['totalEarnings_a'] + p.participant.vars['totalEarnings_b']
+        p.participant.vars['totalCash'] = round(p.participant.vars['totalEarnings'] * Constants.conversion, 2)
+        p.participant.vars['finalCash'] = p.participant.vars['totalCash'] + 3
 
         # Log effort of others
         p.others_effort_act_b = group_total_effort - individual_effort
