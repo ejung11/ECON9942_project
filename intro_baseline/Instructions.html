@@ -11,7 +11,7 @@
 {{ endblock }}
 
 {% block title %}
-    Game 1: Instructions
+    Part 1: Instructions
 {% endblock %}
 
 
@@ -19,11 +19,32 @@
 
 <div class="narrow-body">
 
+    <!-- ######################################### Page 1 #############################################  -->
+
+    <div id="instPage1" style="display: none;">
+
     <div class="instructions-subheading">Random Matching and Anonymity</div>
     <p>
-        In this experiment, you will be <strong>randomly assigned to a group of 8 people</strong>.
-        The group you are assigned to will <strong>stay the same throughout the entire experiment</strong>.
+        In this part, you will be <strong>randomly assigned to a group of 8 people</strong>.
+        The group you are assigned to will stay the same throughout <strong>Part 1</strong>.
     </p>
+
+    <div class="instructions-subheading">Multiple Rounds</div>
+    <p>The game consists of <strong>10 decision rounds</strong>.</p>
+
+
+    <div class="instructions-subheading">Earnings</div>
+    <p>Your earnings in this part will be the <strong>sum of your earnings across all 10 rounds</strong>.</p>
+
+    <div style="text-align: center;">
+      <button class="button" type="button" onclick="showPage2();">Next Page >></button>
+    </div>
+
+    </div>
+
+<!-- ######################################### Page 2 #############################################  -->
+
+    <div id="instPage2" style="display: none;">
 
     <div class="instructions-subheading">Settings</div>
     <p>
@@ -49,7 +70,10 @@
             </p>
         </li>
     </ul>
-    <br>
+    <p>
+        <strong>Do Not Worry about the Calculation.</strong> We will provide you a tool for calculating your earnings.
+    </p>
+
     <p>
         Note that the return from Activity B <b><span class="ecu">decreases</span></b>
         as the total efforts allocated to Activity B by the group <b><span class="ecu">increases</span></b>.
@@ -60,22 +84,282 @@
         and the decisions of <strong>others in your group</strong>.
     </p>
 
+    <p>
+        Below is an example of a <strong>decision page</strong>. <br>
+        More details about the decision page will be provided in the following sections.
+    </p>
 
-    <div class="instructions-subheading">Multiple Rounds</div>
-    <p>The game consists of <strong>10 decision rounds</strong>.
-        In each round, you will face the same decision task, where you will allocate efforts between Activity A and Activity B.</p>
+    <br>
 
+    <div class="card bg-secondary text-white m-3">
+    <div class="card-body">
 
-    <div class="instructions-subheading">Earnings</div>
-    <p>After everyone has submitted their decisions, the earnings for the round will be calculated and shown to you.</p>
-    <ul>
-        <li><strong>Earnings from Activity A</strong></li>
-        <li><strong>Earnings from Activity B</strong></li>
-    </ul>
-    <p>Your final earnings will be the sum of your earnings across all 10 rounds.</p>
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline.png" alt="Figure 1 "><br/><br/>
+    </div>
 
-    {% next_button %}
+    </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage1();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+        <button class="button" type="button" onclick="showPage3();">Next Page >></button>
+    </div>
+
+    </div>
+
+    <!-- ######################################### Page 3 #############################################  -->
+
+    <div id="instPage3" style="display: none;">
+
+    <div class="instructions-subheading">Your Decision</div>
+    <p>
+        Use the <strong>slider in Area A</strong> to decide your allocation to Activity B. <br>
+        Remaining effort will be automatically allocated to Activity A.
+    </p>
+
+    <br>
+
+    <div class="card bg-secondary text-white m-3">
+    <div class="card-body">
+
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline_A.png" alt="Figure 1"><br/><br/>
+    </div>
+
+    </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage2();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" type="button" onclick="showPage4();">Next Page >></button>
+    </div>
+
+    </div>
+
+    <!-- ######################################### Page 4 #############################################  -->
+
+    <div id="instPage4" style="display: none;">
+
+    <div class="instructions-subheading">Guess Tool</div>
+    <p>
+        Make a guess on the average allocation of others.
+        <br>
+        How much effort you think other participants are allocating to Activity B
+    </p>
+
+    <p>
+        Use the <strong>slider in Area B</strong>  to make your guess about the average effort allocated by others.
+        <br>
+        Based on your guess, you will see your <strong>potential earnings</strong> for this scenario.
+    </p>
+
+    <br>
+
+    <div class="card bg-secondary text-white m-3">
+    <div class="card-body">
+
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline_B.png" alt="Figure 1"><br/><br/>
+    </div>
+
+    </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage3();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" type="button" onclick="showPage5();">Next Page >></button>
+    </div>
+
+    </div>
+
+     <!-- ######################################### Page 5 #############################################  -->
+
+    <div id="instPage5" style="display: block;">
+
+        <div class="card bg-light m-3">
+    <div class="card-body">
+
+        <div class="instructions-subheading">Situation 1</div>
+
+        <p>
+            This is round 1 of the game. <br>
+            Assume the group's total allocation to Activity B is <strong>80 efforts</strong>.
+            <br> <br>
+            The return for each effort allocated to Activity B will be:
+            <br>
+             <strong>20 - 0.1171 × 80 = 10.63 ECUs per effort</strong>
+        </p>
+
+        <p>
+            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B will be:
+            <br>
+            <strong>10 × 10.63 = 106.3 ≈ 106 ECUs</strong>
+        </p>
+
+        <p>
+            For your remaining <strong>15 efforts</strong> allocated to Activity A, your earnings from Activity A will be:
+            <br>
+            <strong>15 × 5 = 75 ECUs</strong>
+        </p>
+
+        <p>
+            Thus, your total earnings for this round will be:
+            <br>
+            <strong>106 + 75 = 181 ECUs</strong>
+        </p>
+
+        <p>
+            Figure below illustrates the example above.
+        </p>
+
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline_ex1.png" alt="Figure 4 "><br/><br/>
+    </div>
+
+    </div>
+</div>
+
+    <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage4();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" type="button" onclick="showPage6();">Next Page >></button>
+    </div>
+
+    </div>
+
+    <!-- ######################################### Page 6 #############################################  -->
+
+        <div id="instPage6" style="display: block;">
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+
+        <div class="instructions-subheading">Situation 2</div>
+
+        <p>
+            This is round 2 of the game.
+            <br>
+            Assume the group's total allocation to Activity B is <strong>150 efforts</strong>.
+            <br> <br>
+            The return for each effort allocated to Activity B will be:
+            <br>
+            <strong>20 - 0.1171 × 150 = 2.44 ECUs per effort</strong>
+        </p>
+
+        <p>
+            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B will be:
+            <br>
+            <strong>10 × 2.44 = 24.4 ≈ 24 ECUs</strong>
+        </p>
+
+        <p>
+            For your remaining <strong>15 efforts</strong> allocated to Activity A, your earnings from Activity A will be:
+            <br>
+            <strong>15 × 5 = 75 ECUs</strong>
+        </p>
+
+        <p>
+            Thus, your total earnings for this round will be:
+            <br>
+            <strong>24 + 75 = 99 ECUs</strong>
+        </p>
+
+        <p>
+            Figure below illustrates the example above.
+        </p>
+
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline_ex2.png" alt="Figure 5 "><br/><br/>
+    </div>
+
+    </div>
 
 </div>
+        <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage5();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" style="width: 300px;" >Finish Reading Instructions</button>
+    </div>
+
+    </div>
+
+</div>
+
+
+    <!-- ######################################### Script Code #############################################  -->
+
+<script>
+
+        function showPage1() {
+
+          showPage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+        function showPage2() {
+
+          hidePage(document.getElementById('instPage1'));
+          showPage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+
+        }
+        function showPage3() {
+
+          hidePage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          showPage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+        function showPage4() {
+
+          hidePage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          showPage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+         function showPage5() {
+          hidePage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          showPage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+        function showPage6() {
+
+          hidePage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          showPage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+
+        function hidePage (element) {
+        //        element.style.visibility = 'hidden';
+        element.style.display = "none";
+
+        }
+        function showPage (element) {
+        element.style.display = "block";
+
+        }
+        showPage1();
+    </script>
 
 {% endblock %}

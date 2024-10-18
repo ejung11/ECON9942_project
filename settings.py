@@ -19,10 +19,24 @@ dict(
 
 
 dict(
-        name='intro_baseline_onepage',
+        name='intro_baseline',
         display_name='baseline_intro',
         num_demo_participants=1,
-        app_sequence=['intro_baseline_onepage'],
+        app_sequence=['intro_baseline'],
+    ),
+
+dict(
+        name='intro_baseline_2',
+        display_name='baseline_intro_2',
+        num_demo_participants=1,
+        app_sequence=['intro_baseline_2'],
+    ),
+
+dict(
+        name='cpr_partial_baseline_2',
+        display_name='CPR baseline 2',
+        num_demo_participants=8,
+        app_sequence=['cpr_partial_baseline_2'],
     ),
 
     dict(
@@ -75,7 +89,7 @@ dict(
         app_sequence=[
             'consent',
             'instructions_general',
-            'intro_baseline_onepage',
+            'intro_baseline',
             'cpr_partial_baseline_p',
             'cpr_partial_baseline',
             'post_survey',

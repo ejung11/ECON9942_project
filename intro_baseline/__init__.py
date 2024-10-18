@@ -2,7 +2,7 @@ from otree.api import *
 
 
 doc = """
-This is the intro app for Game 1 of 
+This is the intro app for Part 1 of 
 the project "Managing the Tragedy of the Commons: A Partial Output-Sharing Approach"
 This will include Instructions, Example, KnowledgeCheck Pages.
 """
@@ -33,7 +33,7 @@ class Player(BasePlayer):
 
     kc2 = models.StringField(
         choices=[['True', 'A.  Remain the same'], ['False', 'B.  Mixed'],],
-        label='2. Will your group remain the same or be mixed between games?',
+        label='2. Will your group remain the same or be mixed throughout Part 1?',
         widget=widgets.RadioSelect,
     )
 
@@ -79,7 +79,7 @@ class Player(BasePlayer):
                  ['False', 'C.  A random round will be selected, and only the earnings from that round.'],
                  ['False', 'D.  A fixed amount of money, regardless of your performance.'],
                  ],
-        label='7. How will your final payoff in the experiment be calculated?',
+        label='7. How will your payoff in the Part 1 be calculated?',
         widget=widgets.RadioSelect,
     )
 
@@ -88,9 +88,6 @@ class Player(BasePlayer):
 class Instructions(Page):
     pass
 
-
-class Example(Page):
-    pass
 
 
 class KnowledgeCheck(Page):
@@ -120,7 +117,7 @@ class KnowledgeCheck(Page):
         # Define specific error messages for each question
         error_messages = dict(
             kc1="You will be randomly assigned to a group of 8 people.",
-            kc2="Your group will remain the same throughout the games.",
+            kc2="Your group will remain the same throughout Part 1.",
             kc3="There are 10 rounds in the game.",
             kc4="You are given 25 efforts in every round to allocate between activities.",
             kc5="The return for each effort in Activity A is 5 ECUs.",
@@ -139,6 +136,5 @@ class KnowledgeCheck(Page):
 
 page_sequence = [
     Instructions,
-    Example,
     KnowledgeCheck,
 ]
