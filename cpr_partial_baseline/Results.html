@@ -17,11 +17,11 @@
 
         <tr><td colspan="2"><hr/></td></tr>
 
-        <tr><td>Your earnings this round:</td><td>{{ player.period_payoff_int }} tokens</td></tr>
+        <tr><td>Your earnings this round:</td><td>{{ player.period_payoff_int }} ECUs</td></tr>
 
         <tr><td colspan="2"><hr/></td></tr>
 
-        <tr><td>Your accumulated earnings:</td><td>{{ player.participant.vars.totalEarnings_a }} tokens</td></tr>
+        <tr><td>Your accumulated earnings:</td><td>{{ player.participant.vars.totalEarnings_a }} ECUs</td></tr>
 
     </table>
     <p></p>
@@ -43,9 +43,9 @@
                     {% for p in player.in_previous_rounds %}
                         <tr>
                             <td class="text-center my_style">{{p.round_number}}</td>
-                            <td class="text-center"> {{p.effort_act_b}} tokens</td>
-                            <td class="text-center"> {{p.period_payoff_int}} tokens</td>
-                            <td class="text-center"> {{p.history_accumulated_earnings}} tokens</td>
+                            <td class="text-center"> {{p.effort_act_b}} ECUs</td>
+                            <td class="text-center"> {{p.period_payoff_int}} ECUs</td>
+                            <td class="text-center"> {{p.history_accumulated_earnings}} ECUs</td>
                         </tr>
                     {% endfor %}
                     </tbody>
