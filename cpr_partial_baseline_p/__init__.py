@@ -149,8 +149,17 @@ class Results(Page):
     """Players payoff: How much each has earned"""
 
 
+
+class End(Page):
+    @staticmethod
+    def is_displayed(group):
+        return group.round_number == Constants.num_rounds
+
+
+
 page_sequence = [
     Harvest,
     ResultsWaitPage,
     Results,
+    End,
 ]
