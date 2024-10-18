@@ -111,7 +111,7 @@
                 // Earnings from Activity A and Activity B (already calculated)
                 let earningsActivityA = return_act_a * ( endowment - activityBEffort);
                 let earningsActivityB_float = activityBEffort *
-                                        (ind_return_act_b - ext_cost * (guessEffort * ((group_size - 1) + activityBEffort)));
+                                        (ind_return_act_b - ext_cost * (guessEffort * (group_size - 1) + activityBEffort));
                 let earningsActivityB = parseInt(earningsActivityB_float);
 
                 document.getElementById('earnings_activity_A').textContent = earningsActivityA;

@@ -15,7 +15,7 @@ import random
 
 class Constants(BaseConstants):
     name_in_url = 'cpr_baseline'
-    players_per_group = 2
+    players_per_group = 8
     num_rounds = 10
     instructions_template = 'cpr_partial_baseline/rules.html'
     endowment = 25

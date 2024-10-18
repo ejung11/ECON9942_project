@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
     dict(
         name='cpr_partial_baseline',
         display_name='CPR game partial out-put sharing (baseline)',
-        num_demo_participants=2,
+        num_demo_participants=8,
         app_sequence=['cpr_partial_baseline'],
     ),
 
@@ -14,6 +14,13 @@ dict(
         display_name='baseline_intro',
         num_demo_participants=1,
         app_sequence=['intro_baseline'],
+    ),
+
+dict(
+        name='intro_baseline_onepage',
+        display_name='baseline_intro_test',
+        num_demo_participants=1,
+        app_sequence=['intro_baseline_onepage'],
     ),
 
     dict(
@@ -66,7 +73,7 @@ dict(
         app_sequence=[
             'consent',
             'instructions_general',
-            'intro_baseline',
+            'intro_baseline_onepage',
             'post_survey',
                       ],
     ),
@@ -108,8 +115,8 @@ ROOMS = [
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
 
     dict(
-        name='econ9942',
-        display_name='Econ 9942 class',
+        name='demo',
+        display_name='demo',
         participant_label_file='_rooms/econ9942.txt',
         use_secure_urls=True,
     ),

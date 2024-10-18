@@ -1,0 +1,193 @@
+{% extends "global/Page.html" %}
+{% load static %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+    <style>
+       h5 {
+           text-decoration: underline;
+       }
+   </style>
+{{ endblock }}
+
+{% block title %}
+    Game 1: Instructions
+{% endblock %}
+
+
+{% block content %}
+
+<div class="narrow-body">
+    <div id="instPage1" style="display: none;">
+
+    <div class="instructions-subheading">Random Matching and Anonymity</div>
+    <p>
+        In this experiment, you will be <strong>randomly assigned to a group of 8 people</strong>.
+        The group you are assigned to will <strong>stay the same throughout the entire experiment</strong>.
+    </p>
+
+    <div class="instructions-subheading">Settings</div>
+    <p>
+        You will be playing an <strong>effort allocation game</strong> in a <strong>group of 8 people</strong>.
+        In each round, you will decide how to allocate efforts between two different activities.
+        Each round, you are endowed with <strong>25 efforts</strong> and must decide how many to allocate
+        to <strong>Activity A</strong> and <strong>Activity B</strong>.
+    </p>
+
+    <ul>
+        <li>
+            <strong>Activity A</strong>: For each effort allocated to Activity A, you will receive a <strong>fixed return of 5 ECUs</strong>.
+        </li>
+        <li>
+            <strong>Activity B</strong>: The return on efforts allocated to Activity B is <strong>variable</strong>
+            and depends on the <strong>total efforts allocated by the entire group, including yours</strong>.
+
+            <br> <br>
+            The return for each effort allocated to Activity B is:
+            <br>
+            <p>
+                <strong>20 - 0.1171 × (group's total effort allocated to Activity B) ECUs per effort</strong>
+            </p>
+        </li>
+    </ul>
+    <br>
+    <p>
+        Note that the return from Activity B <b><span class="ecu">decreases</span></b>
+        as the total efforts allocated to Activity B by the group <b><span class="ecu">increases</span></b>.
+    </p>
+
+    <p>
+        Your earnings for each round will depend on both <strong>your own decisions</strong>
+        and the decisions of <strong>others in your group</strong>.
+    </p>
+
+
+    <div class="instructions-subheading">Multiple Rounds</div>
+    <p>The game consists of <strong>10 decision rounds</strong>.
+        In each round, you will face the same decision task, where you will allocate efforts between Activity A and Activity B.</p>
+
+
+    <div class="instructions-subheading">Earnings</div>
+    <p>After everyone has submitted their decisions, the earnings for the round will be calculated and shown to you.</p>
+    <ul>
+        <li><strong>Earnings from Activity A</strong></li>
+        <li><strong>Earnings from Activity B</strong></li>
+    </ul>
+    <p>Your final earnings will be the sum of your earnings across all 10 rounds.</p>
+
+    <div style="text-align: center;">
+      <button class="button" type="button" onclick="showPage2();">Next Page >></button>
+    </div>
+
+    </div>
+
+    <div id="instPage2" style="display: block;">
+
+        <div class="card bg-light m-3">
+    <div class="card-body">
+
+        <div class="instructions-subheading">Situation 1</div>
+
+        <p>
+            This is round 1 of the game. <br>
+            Assume the group's total allocation to Activity B is <strong>60 efforts</strong>.
+            <br> <br>
+            The return for each effort allocated to Activity B will be:
+            <br>
+             <strong>20 - 0.1171 × 60 = 12.97 ECUs per effort</strong>
+        </p>
+
+        <p>
+            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B will be:
+            <br>
+            <strong>10 × 12.97 = 129.7 ≈ 130 ECUs</strong>
+        </p>
+
+        <p>
+            For your remaining <strong>15 efforts</strong> allocated to Activity A, your earnings from Activity A will be:
+            <br>
+            <strong>15 × 5 = 75 ECUs</strong>
+        </p>
+
+        <p>
+            Thus, your total earnings for this round will be:
+            <br>
+            <strong>130 + 75 = 205 ECUs</strong>
+        </p>
+
+    </div>
+</div>
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+
+        <div class="instructions-subheading">Situation 2</div>
+
+        <p>
+            This is round 5 of the game.
+            <br>
+            Assume the group's total allocation to Activity B is <strong>120 efforts</strong>.
+            <br> <br>
+            The return for each effort allocated to Activity B will be:
+            <br>
+            <strong>20 - 0.1171 × 120 = 5.95 ECUs per effort</strong>
+        </p>
+
+        <p>
+            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B will be:
+            <br>
+            <strong>10 × 5.95 = 59.5 ≈ 60 ECUs</strong>
+        </p>
+
+        <p>
+            For your remaining <strong>15 efforts</strong> allocated to Activity A, your earnings from Activity A will be:
+            <br>
+            <strong>15 × 5 = 75 ECUs</strong>
+        </p>
+
+        <p>
+            Thus, your total earnings for this round will be:
+            <br>
+            <strong>60 + 75 = 135 ECUs</strong>
+        </p>
+
+    </div>
+
+</div>
+        <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage1();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" style="width: 300px;" >Finish Reading Instructions</button>
+    </div>
+
+    </div>
+
+</div>
+
+<script>
+
+        function showPage1() {
+
+          showPage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          $('html,body').scrollTop(0);
+        }
+        function showPage2() {
+
+          hidePage(document.getElementById('instPage1'));
+          showPage(document.getElementById('instPage2'));
+          $('html,body').scrollTop(0);
+
+        }
+        function hidePage (element) {
+        //        element.style.visibility = 'hidden';
+        element.style.display = "none";
+
+        }
+        function showPage (element) {
+        element.style.display = "block";
+
+        }
+        showPage1();
+    </script>
+
+{% endblock %}

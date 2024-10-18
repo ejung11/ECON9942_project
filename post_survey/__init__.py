@@ -48,12 +48,13 @@ class Player(BasePlayer):
     race = models.IntegerField(
         label="Q3) Which race or ethnicity best describes you? ",
         choices=[
-            [1, 'White'],
-            [2, 'Black or African American'],
+            [1, 'White or Caucasian'],
+            [2, 'Black or African-American'],
             [3, 'Hispanic or Latino'],
-            [4, 'Asian or Pacific Islander'],
-            [5, 'American Indian or Alaskan Native'],
-            [6, 'Multiple ethnicity or Other '],
+            [4, 'Asian'],
+            [5, 'Native American'],
+            [6, 'Mixed Race or Multi-Racial'],
+            [7, 'Other'],
         ],
         widget=widgets.RadioSelect,
     )
