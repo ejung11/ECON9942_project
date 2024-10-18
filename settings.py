@@ -10,15 +10,8 @@ SESSION_CONFIGS = [
     ),
 
 dict(
-        name='intro_baseline',
-        display_name='baseline_intro',
-        num_demo_participants=1,
-        app_sequence=['intro_baseline'],
-    ),
-
-dict(
         name='intro_baseline_onepage',
-        display_name='baseline_intro_test',
+        display_name='baseline_intro',
         num_demo_participants=1,
         app_sequence=['intro_baseline_onepage'],
     ),

@@ -33,7 +33,7 @@ class Player(BasePlayer):
 
     kc2 = models.StringField(
         choices=[['True', 'A.  Remain the same'], ['False', 'B.  Mixed'],],
-        label='2. Will your group remain the same or be mixed between games?',
+        label='2. Will your group remain the same or be mixed throughout Part 1?',
         widget=widgets.RadioSelect,
     )
 
@@ -79,7 +79,7 @@ class Player(BasePlayer):
                  ['False', 'C.  A random round will be selected, and only the earnings from that round.'],
                  ['False', 'D.  A fixed amount of money, regardless of your performance.'],
                  ],
-        label='7. How will your final payoff in the experiment be calculated?',
+        label='7. How will your payoff in the Part 1 be calculated?',
         widget=widgets.RadioSelect,
     )
 
