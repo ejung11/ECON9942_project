@@ -1,30 +1,187 @@
 {% extends "global/Page.html" %}
 {% load otree %}
 
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{{ static 'global/nouislider.css' }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{% endblock %}
+
 {% block title %}
-    <strong>Harvest</strong>
+    <strong>Practice: Round {{group.round_number}}</strong>
 {% endblock %}
 
 {% block content %}
+    <body>
+    <div class="narrow-body">
+         <!-- Collapsible Rules Section -->
+        <button class="btn btn-info mt-3" type="button" data-toggle="collapse" data-target="#rulesCollapse" aria-expanded="false" aria-controls="rulesCollapse">
+            Show/Hide Rules
+        </button>
 
-    <h4><strong>Round {{group.round_number}}</strong></h4>
+        <div class="collapse mt-3" id="rulesCollapse">
+            {% include Constants.instructions_template %}
+        </div>
 
     <p>
-        This is a common-pool resource game with
-        {{ Constants.players_per_group }} players per group, <br>
-        an <strong> endowment of {{ Constants.endowment }} efforts</strong>.
-        You will choose how much effort you want to put for harvest the common-pool resource.
+        This is a practice game.
+        You are in a group of 8, you and 7 computers. <br>
+        You are given an endowment of <strong>  {{ Constants.endowment }} efforts </strong>
+        and have to allocate these into two activities.
+        <br>
+        <ul>
+            <li><strong>  Activity A </strong>: It gives a fixed return per effort. </li>
+            <li><strong>  Activity B </strong>: It gives a variable return per effort.
+                                                Depending on the total effort allocated to Activity B.</li>
+        </ul>
+
+        You will choose how much effort you want to allocate to Activity B.
+        Then, your effort allocation to Activity A is automatically decided by <strong>25 - Activity B</strong> allocation.
     </p>
 
     <p>
-        How much do you want to invest in harvesting the resource? <br>
-        Input between <strong>0-25</strong>.
+        Use slider to indicate how much do you want to allocate to Activity B.  <br>
     </p>
 
-    {% formfields %}
+    <div class="decision-1-subsection">
+        Your Decision: <strong><span id="slider_value_display">0</span></strong>
+    </div>
+    <br>
+    <div class="slider-container-1">
+        <div class="slider" id="slider1"></div>
+    </div>
+
+    <br>
+    <!-- Second slider: Guess on the average decision of others -->
+<!--    <p>-->
+<!--        How much effort do you think others in the group are allocating to Activity 2? <br>-->
+<!--        Use the slider to make your guess.-->
+<!--    </p>-->
+
+    <div class="instructions">
+    <div class="decision-1-subsection">
+        Your Guess on Others' Average Decision: <strong><span id="guess_value_display">0</span></strong>
+    </div>
+    <br>
+    <div class="slider-container-1">
+        <div class="slider" id="slider2"></div>
+    </div>
+    <br>
+
+
+    <!-- Preview of the Results and Earnings -->
+    <h4>Preview of Your Earnings:</h4>
+    <p>Earnings from Activity A: <strong><span id="earnings_activity_A">0</span></strong> ECUs</p>
+    <p>Earnings from Activity B: <strong><span id="earnings_activity_B">0</span></strong> ECUs</p>
+    <p>Total Earnings: <strong><span id="total_earnings">0</span></strong> ECUs</p>
+    </div>
+
+    <br>
 
     {% next_button %}
 
-{% include Constants.instructions_template %}
+    <input type="hidden" name="effort_act_b" id="player_effort_act_b" value="0">
+    <input type="hidden" name="guess_act_b" id="player_guess_act_b" value="0">
 
+    </div>
+    </body>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'global/nouislider.js' %}"></script>
+
+
+    <script>
+
+            // Constants for earnings calculations
+            const endowment = 25;  // Initial Endowment
+            const return_act_a = 5;  // Fixed return per effort for Activity 1
+            const ind_return_act_b = 20;  // Return per effort for Activity 2
+            const ext_cost = 0.1171;  // Externality cost
+            const group_size = 8;
+
+            // Function to calculate and update total earnings based on the sliders' values
+            function updateTotalEarnings() {
+                let activityBEffort = parseInt(document.getElementById('player_effort_act_b').value);
+                let guessEffort = parseInt(document.getElementById('player_guess_act_b').value);
+
+                // Earnings from Activity A and Activity B (already calculated)
+                let earningsActivityA = return_act_a * ( endowment - activityBEffort);
+                let earningsActivityB_float = activityBEffort *
+                                        (ind_return_act_b - ext_cost * (guessEffort * (group_size - 1) + activityBEffort));
+                let earningsActivityB = parseInt(earningsActivityB_float);
+
+                document.getElementById('earnings_activity_A').textContent = earningsActivityA;
+                document.getElementById('earnings_activity_B').textContent = earningsActivityB;
+
+                // Calculate and display total earnings
+                let totalEarnings = earningsActivityA + earningsActivityB;
+                document.getElementById('total_earnings').textContent = totalEarnings;
+            };
+
+            // Initialize noUiSlider for slider1
+            let slider1 = document.getElementById("slider1");
+            noUiSlider.create(slider1, {
+                start: [0],
+                range: {
+                    'min': 0,
+                    'max': 25
+                },
+                pips: {
+                    mode: "steps",
+                    density: 25
+                },
+                step: 1
+            });
+
+            // Initialize noUiSlider for guess (slider2)
+            let slider2 = document.getElementById("slider2");
+            noUiSlider.create(slider2, {
+                start: [0],
+                range: {
+                    'min': 0,
+                    'max': 25
+                },
+                pips: {
+                    mode: "steps",
+                    density: 25
+                },
+                step: 1
+            });
+
+
+            // Update the hidden input field and the display for slider1 (decision)
+            slider1.noUiSlider.on('update', function (values, handle) {
+            let sliderValue = parseInt(values[handle]);  // Convert slider value to integer
+
+            // Update hidden field with the integer slider value for decision
+            document.getElementById('player_effort_act_b').value = sliderValue;
+
+            // Display the value on the page in real-time
+            document.getElementById('slider_value_display').textContent = sliderValue;
+
+            // Update total earnings
+            updateTotalEarnings();
+             });
+
+
+            // Update the hidden input field and the display for slider2 (guess)
+            slider2.noUiSlider.on('update', function (values, handle) {
+            let guessValue = parseInt(values[handle]);  // Convert slider value to integer
+
+            // Update hidden field with the integer slider value for guess
+            document.getElementById('player_guess_act_b').value = guessValue;
+
+            // Display the value on the page in real-time
+            document.getElementById('guess_value_display').textContent = guessValue;
+
+            // Update total earnings
+             updateTotalEarnings();
+             });
+
+</script>
 {% endblock %}

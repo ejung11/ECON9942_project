@@ -9,6 +9,15 @@ SESSION_CONFIGS = [
         app_sequence=['cpr_partial_baseline'],
     ),
 
+
+dict(
+        name='cpr_partial_baseline_p',
+        display_name='CPR game partial out-put sharing (baseline) Practice',
+        num_demo_participants=1,
+        app_sequence=['cpr_partial_baseline_p'],
+    ),
+
+
 dict(
         name='intro_baseline_onepage',
         display_name='baseline_intro',

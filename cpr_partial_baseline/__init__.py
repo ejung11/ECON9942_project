@@ -158,6 +158,7 @@ class Harvest(Page):
     form_fields = ['effort_act_b', 'guess_act_b']
 
 
+
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'
 
