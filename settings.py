@@ -9,6 +9,13 @@ SESSION_CONFIGS = [
         app_sequence=['cpr_partial_baseline'],
     ),
 
+dict(
+        name='cpr_partial_60',
+        display_name='CPR game partial out-put sharing (High Treatment)',
+        num_demo_participants=8,
+        app_sequence=['cpr_partial_60'],
+    ),
+
 
 dict(
         name='cpr_partial_baseline_p',
@@ -59,28 +66,12 @@ dict(
         num_demo_participants=1,
         app_sequence=[
             'instructions_general',
-
-
                       ],
     ),
 
-    dict(
-        name='cpr_partial_60',
-        display_name='CPR game partial out-put sharing (forced)',
-        num_demo_participants=2,
-        app_sequence=['cpr_partial_60'],
-    ),
 
-    dict(
-        name='Pilot',
-        display_name='CPR game partial out-put sharing',
-        num_demo_participants=8,
-        app_sequence=['instructions_general',
-                      'cpr_partial_baseline_p',
-                      'cpr_partial_baseline',
-                      'cpr_partial_forced_p',
-                      'cpr_partial_60',],
-    ),
+
+
 
 dict(
         name='Test_session_AA',
