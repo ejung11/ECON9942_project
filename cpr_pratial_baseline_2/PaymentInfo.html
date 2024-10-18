@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+    <style>
+       h5 {
+           text-decoration: underline;
+       }
+   </style>
+{{ endblock }}
+
+{% block title %}
+<div class="narrow-body">
+    Final Report for Part 1
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="narrow-body">
+    <div class="panel panel-default" style="margin-bottom:10px">
+        <div class="panel-body">
+            <p>This is the end of Part 1.</p>
+            <p>Your Earnings is <strong>{{ player.participant.vars.totalEarnings_a }} ECUs</strong>. </p>
+
+            <p>
+                You will be playing another game with different version shortly. Please wait for additional instruction from the experimenter.
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
