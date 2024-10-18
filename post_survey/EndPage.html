@@ -13,7 +13,7 @@
 
 {% block content %}
 <div class="narrow-body" >
-    <div class="instructions">
+
     <p>
         This is the end of the experiment. Thank you for your participation.
     </p>
@@ -22,12 +22,15 @@
         Here is the summary for your earnings today.
     </p>
 
+    <div class="instructions">
+
     <p>Your Earnings in Part 1 is <strong>{{ player.participant.vars.totalEarnings_a }} ECUs</strong>. </p>
     <p>Your Earnings in Part 2 is <strong>{{ player.participant.vars.totalEarnings_b }} ECUs</strong>. </p>
     <p>Your Earnings in Total is <strong>{{ player.participant.vars.totalEarnings }} ECUs</strong>. </p>
+        <br>
     <p>Total Earnings converted to U.S.D <strong>${{ player.participant.vars.totalCash }}</strong>. </p>
     <p>For completing the post-survey, <strong>$3</strong>. </p>
-
+        <br>
     <p>
         Here is your final payoff in U.S.D.
     </p>
