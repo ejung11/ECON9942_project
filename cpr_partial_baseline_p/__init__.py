@@ -54,83 +54,71 @@ class Player(BasePlayer):
     period_payoff = models.FloatField()
     period_payoff_int = models.IntegerField()
 
-
+    group_total_effort = models.IntegerField()
 
 
 #FUNCTIONS
 
 #Payoffs
-def set_payoffs(g: Group):
-    for p in g.get_players():
-        # Assign different values based on the round number
-        if g.round_number == 1:
-            g.total_effort_act_b = Constants.fixed_others_effort_1 + p.effort_act_b
-        elif g.round_number == 2:
-            g.total_effort_act_b = Constants.fixed_others_effort_2 + p.effort_act_b
-        elif g.round_number == 3:
-            g.total_effort_act_b = Constants.fixed_others_effort_3 + p.effort_act_b
+def set_payoffs(player: Player):
+    # Assign different values based on the round number
+    if player.round_number == 1:
+        fixed_others_effort = Constants.fixed_others_effort_1
+    elif player.round_number == 2:
+        fixed_others_effort = Constants.fixed_others_effort_2
+    elif player.round_number == 3:
+        fixed_others_effort = Constants.fixed_others_effort_3
 
-    for p in g.get_players():
-        individual_effort = p.effort_act_b
-        group_total_effort = g.total_effort_act_b
+    player.others_effort_act_b = fixed_others_effort
 
-        # Logically break down the payoff calculation
-        base_endowment_value = 5 * Constants.endowment
-        individual_contribution = 20 * individual_effort
-        externality_cost = 0.1171 * group_total_effort * individual_effort
+    # Total group effort is the sum of the player's effort and fixed others' effort
+    group_total_effort = player.effort_act_b + fixed_others_effort
+    player.group_total_effort = group_total_effort
 
-        p.period_payoff = float(base_endowment_value - 5 * individual_effort + individual_contribution - externality_cost)
-        p.period_payoff_int = round(p.period_payoff)
+    # Payoff calculation
+    base_endowment_value = 5 * Constants.endowment
+    individual_contribution = 20 * player.effort_act_b
+    externality_cost = 0.1171 * group_total_effort * player.effort_act_b
+
+    player.period_payoff = float(base_endowment_value - 5 * player.effort_act_b + individual_contribution - externality_cost)
+    player.period_payoff_int = round(player.period_payoff)
+
+
+#Payoffs
+# def set_payoffs(g: Group):
+#     for p in g.get_players():
+#         # Assign different values based on the round number
+#         if g.round_number == 1:
+#             g.total_effort_act_b = Constants.fixed_others_effort_1 + p.effort_act_b
+#         elif g.round_number == 2:
+#             g.total_effort_act_b = Constants.fixed_others_effort_2 + p.effort_act_b
+#         elif g.round_number == 3:
+#             g.total_effort_act_b = Constants.fixed_others_effort_3 + p.effort_act_b
+#
+#         if g.round_number == 1:
+#             p.others_effort_act_b = Constants.fixed_others_effort_1
+#         elif g.round_number == 2:
+#             p.others_effort_act_b = Constants.fixed_others_effort_2
+#         elif g.round_number == 3:
+#             p.others_effort_act_b = Constants.fixed_others_effort_3
+#
+#     for p in g.get_players():
+#         individual_effort = p.effort_act_b
+#         group_total_effort = g.total_effort_act_b
+#
+#         # Logically break down the payoff calculation
+#         base_endowment_value = 5 * Constants.endowment
+#         individual_contribution = 20 * individual_effort
+#         externality_cost = 0.1171 * group_total_effort * individual_effort
+#
+#         p.period_payoff = float(base_endowment_value - 5 * individual_effort + individual_contribution - externality_cost)
+#         p.period_payoff_int = round(p.period_payoff)
 
         # Log effort of others
-        p.others_effort_act_b = g.total_effort_act_b - p.effort_act_b
-
-# Old version
-# def set_payoffs(g: Group):
-#     #setup group total harvest
-#     g.total_effort_act2 = 0
-#
-#     for p in g.get_players():
-#         #Total harvest
-#         g.total_effort_act2 += p.effort_act2
-#
-#     #Earnings for each round
-#     for p in g.get_players():
-#         print('Endowment', Constants.endowment)
-#         print('Effort spent in Activity 2', p.effort_act2)
-#         print('Group Total effort spent in Activity 2', g.total_effort_act2)
-#
-#         p.period_payoff = float(5*Constants.endowment - 5*p.effort_act2 + 20*p.effort_act2 - 0.1171*g.total_effort_act2*p.effort_act2)
-#         print('payoff', p.period_payoff)
-#
-#         p.period_payoff_int = round(p.period_payoff)
-#
-#         #Cumulative earnings for each participant
-#         p.participant.vars['totalEarnings_a'] += p.period_payoff_int
-#         print('total earnings', p.participant.vars['totalEarnings_a'])
-#
-#         #storing history of cumulative earnings
-#         p.history_accumulated_earnings = p.participant.vars['totalEarnings_a']
-#         print('accumulated earnings tracking', p.history_accumulated_earnings )
-#
-#         #Cash amount
-#         p.participant.vars['totalCash_a'] = round(p.participant.vars['totalEarnings_a'] * Constants.conversion, 2)
-#
-#     #others effort in activity 2 (extract cpr)
-#     for p in g.get_players():
-#         p.others_effort_act2 = g.total_effort_act2 - p.effort_act2
+        #p.others_effort_act_b = g.total_effort_act_b - p.effort_act_b
 
 
-# Old version
-# def vars_for_admin_report(subsession):
-#     info = []
-#     for p in subsession.get_players():
-#         if p.participant.label is not None:
-#             total_earnings = 0
-#             for i in p.in_all_rounds():
-#                 total_earnings += i.period_payoff_int
-#             paymentInfo.append(p.participant.label, total_earnings)
-#     return dict(info=info)
+
 
 
 # PAGES
@@ -138,15 +126,13 @@ class Harvest(Page):
     form_model = 'player'
     form_fields = ['effort_act_b', 'guess_act_b']
 
-
-
-class ResultsWaitPage(WaitPage):
-    after_all_players_arrive = 'set_payoffs'
-
-
+    def before_next_page(player: Player, timeout_happened):
+        # Calculate payoffs after the player submits their decision
+        set_payoffs(player)
 
 class Results(Page):
     """Players payoff: How much each has earned"""
+    pass
 
 
 
@@ -159,7 +145,6 @@ class End(Page):
 
 page_sequence = [
     Harvest,
-    ResultsWaitPage,
     Results,
     End,
 ]

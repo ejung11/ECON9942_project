@@ -13,7 +13,7 @@ SESSION_CONFIGS = [
 dict(
         name='cpr_partial_baseline_p',
         display_name='CPR game partial out-put sharing (baseline) Practice',
-        num_demo_participants=1,
+        num_demo_participants=2,
         app_sequence=['cpr_partial_baseline_p'],
     ),
 
@@ -83,8 +83,8 @@ dict(
     ),
 
 dict(
-        name='Test_Whole',
-        display_name='Test_Whole',
+        name='Test_session_AA',
+        display_name='Test session AA',
         num_demo_participants=8,
         app_sequence=[
             'consent',
@@ -92,6 +92,8 @@ dict(
             'intro_baseline',
             'cpr_partial_baseline_p',
             'cpr_partial_baseline',
+            'intro_baseline_2',
+            'cpr_partial_baseline_2',
             'post_survey',
                       ],
     ),
