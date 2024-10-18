@@ -69,13 +69,15 @@ dict(
     ),
 
 dict(
-        name='testing',
-        display_name='testing',
-        num_demo_participants=2,
+        name='Test_Whole',
+        display_name='Test_Whole',
+        num_demo_participants=8,
         app_sequence=[
             'consent',
             'instructions_general',
             'intro_baseline_onepage',
+            'cpr_partial_baseline_p',
+            'cpr_partial_baseline',
             'post_survey',
                       ],
     ),
