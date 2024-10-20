@@ -37,13 +37,24 @@
     <p>Your earnings in this part will be the <strong>sum of your earnings across all 10 rounds</strong>.</p>
 
     <div class="instructions-subheading">Setting</div>
+
     <p>
-        <strong>The setting for Part 2 will be the same as in Part 1.</strong>
-        <br>
-        You will be playing an <strong>effort allocation game</strong> in a <strong>group of 8 people</strong>. <br>
+        You will be playing an <strong>effort allocation game</strong>. <br>
         In each round, you will decide how to allocate efforts between two different activities. <br>
-        Each round, you are endowed with <strong>25 efforts</strong> and must decide how many to allocate
-        to <strong>Activity A</strong> and <strong>Activity B</strong>.
+    </p>
+
+    <p>
+        But the following is new in this Part:
+    </p>
+
+    <div class="instructions-subheading">Sharing Rule</div>
+
+    <p>
+        Now, you are sharing 60% of returns from Activity B wih the group members.
+    </p>
+
+    <p>
+        More details on the next page.
     </p>
 
     <div style="text-align: center;">
@@ -53,12 +64,177 @@
     </div>
 
 
-     <!-- ######################################### Page 2 #############################################  -->
+<!-- ######################################### Page 2 #############################################  -->
 
-    <div id="instPage2" style="display: block;">
+    <div id="instPage2" style="display: none;">
+
+    <div class="instructions-subheading">Settings</div>
+    <p>
+        You will be playing an <strong>effort allocation game</strong> in a <strong>group of 8 people</strong>.
+        In each round, you will decide how to allocate efforts between two different activities.
+        Each round, you are endowed with <strong>25 efforts</strong> and must decide how many to allocate
+        to <strong>Activity A</strong> and <strong>Activity B</strong>.
+    </p>
+
+    <div class="instructions-subheading">New in this game</div>
+
+        <strong>Sharing Rule</strong>
+        <br>
+    <ul>
+        <li>
+            You will <strong>share 60% of your returns from Activity B</strong> with the other group members.
+        </li>
+
+        <li>
+            You will keep the remaining 40% of your returns from Activity B for yourself.
+        </li>
+
+        <li>
+            This means you will also <strong>receive an equal share of the group’s shared returns from Activity B.</strong>
+        </li>
+
+        <li>
+            You will not share any returns from Activity A.
+        </li>
+
+    </ul>
+
+    <p>
+        So your earning in Part 2 is from <strong>Three sources</strong>.
+    </p>
+
+    <ul>
+        <li>
+            <strong>Activity A</strong>: <strong>Fixed return of 5 ECUs</strong> per effort.
+        </li>
+
+        <li>
+            <strong>Activity B</strong>: <strong>Variable return</strong> depends on the
+            total efforts allocated by the entire group, including yours.
+            <br>
+            But, now you are only getting 40% from this activity.
+            <strong>Sharing 60% of earnings from Activity B</strong> with your group members.
+
+            <br> <br>
+            The return for each effort allocated to Activity B is <strong>40%</strong> of the following:
+            <br>
+            <p>
+                <strong>20 - 0.1171 × (group's total effort allocated to Activity B) ECUs per effort</strong>
+            </p>
+        </li>
+
+        <li>
+            <strong>Group's Sharing</strong>: Equal share of group's shared return from Activity B.
+        </li>
+
+    </ul>
+
+    <br>
+
+    <p>
+        <strong>Do Not Worry about the Calculation.</strong> We will provide you a tool for calculating your earnings.
+    </p>
+
+    <p>
+        Your earnings for each round will depend on both <strong>your own decisions</strong>
+        and the decisions of <strong>others in your group</strong>, as well as <strong>the sharing rule for Activity B.</strong>
+    </p>
+
+    <p>
+        Below is an example of a <strong>decision page</strong>. <br>
+        More details about the decision page will be provided in the following sections.
+    </p>
+
+    <br>
+
+    <div class="card bg-secondary text-white m-3">
+    <div class="card-body">
+
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline.png" alt="Figure 1 "><br/><br/>
+    </div>
+
+    </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage1();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+        <button class="button" type="button" onclick="showPage3();">Next Page >></button>
+    </div>
+
+    </div>
+
+    <!-- ######################################### Page 3 #############################################  -->
+
+    <div id="instPage3" style="display: none;">
+
+    <div class="instructions-subheading">Your Decision</div>
+    <p>
+        Use the <strong>slider in Area A</strong> to decide your allocation to Activity B. <br>
+        Remaining effort will be automatically allocated to Activity A.
+    </p>
+
+    <br>
+
+    <div class="card bg-secondary text-white m-3">
+    <div class="card-body">
+
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline_A.png" alt="Figure 1"><br/><br/>
+    </div>
+
+    </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage2();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" type="button" onclick="showPage4();">Next Page >></button>
+    </div>
+
+    </div>
+
+    <!-- ######################################### Page 4 #############################################  -->
+
+    <div id="instPage4" style="display: none;">
+
+    <div class="instructions-subheading">Guess Tool</div>
+    <p>
+        Make a guess on the average allocation of others.
+        <br>
+        How much effort you think other participants are allocating to Activity B
+    </p>
+
+    <p>
+        Use the <strong>slider in Area B</strong>  to make your guess about the average effort allocated by others.
+        <br>
+        Based on your guess, you will see your <strong>potential earnings</strong> for this scenario.
+    </p>
+
+    <br>
+
+    <div class="card bg-secondary text-white m-3">
+    <div class="card-body">
+
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline_B.png" alt="Figure 1"><br/><br/>
+    </div>
+
+    </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage3();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" type="button" onclick="showPage5();">Next Page >></button>
+    </div>
+
+    </div>
+
+     <!-- ######################################### Page 5 #############################################  -->
+
+    <div id="instPage5" style="display: block;">
 
         <div class="card bg-light m-3">
-            <div class="card-body">
+    <div class="card-body">
 
         <div class="instructions-subheading">Situation 1</div>
 
@@ -72,9 +248,15 @@
         </p>
 
         <p>
-            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B will be:
+            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B before sharing:
             <br>
-            <strong>10 × 10.63 = 106.3 ≈ 106 ECUs</strong>
+            <strong>10 × 10.63 = 106.3 ECUs</strong>
+        </p>
+
+        <p>
+            Since You only keep <strong>40%</strong> of your returns, your personal earnings from Activity B after sharing:
+            <br>
+            <strong>106.3 × 0.4 = 42.52 ≈ 43 ECUs</strong>
         </p>
 
         <p>
@@ -84,9 +266,15 @@
         </p>
 
         <p>
+            You will also receive <strong>1/8 of the group's 60% share</strong> of Activity B returns:
+            <br>
+            <strong>(10.63 × 80) × 0.6 × 1/8 = 63.78 ≈ 64 ECUs</strong>
+        </p>
+
+        <p>
             Thus, your total earnings for this round will be:
             <br>
-            <strong>106 + 75 = 181 ECUs</strong>
+            <strong>43 + 75 + 64 = 182 ECUs</strong>
         </p>
 
         <p>
@@ -97,12 +285,79 @@
         <img style="width: 800px;" src="/static/baseline_ex1.png" alt="Figure 4 "><br/><br/>
     </div>
 
-        </div>
     </div>
+</div>
 
     <div style="text-align: center;">
-        <button class="button" type="button" onclick="showPage1();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
-        <button class="button" style="width: 300px;" >Finish Reading Instructions</button>
+        <button class="button" type="button" onclick="showPage4();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" type="button" onclick="showPage6();">Next Page >></button>
+    </div>
+
+    </div>
+
+    <!-- ######################################### Page 6 #############################################  -->
+
+        <div id="instPage6" style="display: block;">
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+
+        <div class="instructions-subheading">Situation 2</div>
+
+        <p>
+            This is round 2 of the game.
+            <br>
+            Assume the group's total allocation to Activity B is <strong>150 efforts</strong>.
+            <br> <br>
+            The return for each effort allocated to Activity B will be:
+            <br>
+            <strong>20 - 0.1171 × 150 = 2.44 ECUs per effort</strong>
+        </p>
+
+        <p>
+            If you allocate <strong>10 efforts</strong> to Activity B, your earnings from Activity B will be:
+            <br>
+            <strong>10 × 2.44 = 24.4 ECUs</strong>
+        </p>
+
+        <p>
+            Since You only keep <strong>40%</strong> of your returns, your personal earnings from Activity B after sharing:
+            <br>
+            <strong>24.4 × 0.4 = 9.76 ≈ 10 ECUs</strong>
+        </p>
+
+        <p>
+            For your remaining <strong>15 efforts</strong> allocated to Activity A, your earnings from Activity A will be:
+            <br>
+            <strong>15 × 5 = 75 ECUs</strong>
+        </p>
+
+        <p>
+            You will also receive <strong>1/8 of the group's 60% share</strong> of Activity B returns:
+            <br>
+            <strong>(2.44 × 150) × 0.6 × 1/8 = 27.45 ≈ 27 ECUs</strong>
+        </p>
+
+        <p>
+            Thus, your total earnings for this round will be:
+            <br>
+            <strong>10 + 75 + 27 = 112 ECUs</strong>
+        </p>
+
+        <p>
+            Figure below illustrates the example above.
+        </p>
+
+    <div style="text-align: center;">
+        <img style="width: 800px;" src="/static/baseline_ex2.png" alt="Figure 5 "><br/><br/>
+    </div>
+
+    </div>
+
+</div>
+        <div style="text-align: center;">
+        <button class="button" type="button" onclick="showPage5();"> << Previous Page</button>&nbsp;&nbsp;&nbsp;
+      <button class="button" style="width: 300px;" >Finish Reading Instructions</button>
     </div>
 
     </div>
@@ -115,17 +370,66 @@
 <script>
 
         function showPage1() {
+
           showPage(document.getElementById('instPage1'));
           hidePage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
           $('html,body').scrollTop(0);
         }
         function showPage2() {
 
           hidePage(document.getElementById('instPage1'));
           showPage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
           $('html,body').scrollTop(0);
 
         }
+        function showPage3() {
+
+          hidePage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          showPage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+        function showPage4() {
+
+          hidePage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          showPage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+         function showPage5() {
+          hidePage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          showPage(document.getElementById('instPage5'));
+          hidePage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+        function showPage6() {
+
+          hidePage(document.getElementById('instPage1'));
+          hidePage(document.getElementById('instPage2'));
+          hidePage(document.getElementById('instPage3'));
+          hidePage(document.getElementById('instPage4'));
+          hidePage(document.getElementById('instPage5'));
+          showPage(document.getElementById('instPage6'));
+          $('html,body').scrollTop(0);
+        }
+
         function hidePage (element) {
         //        element.style.visibility = 'hidden';
         element.style.display = "none";

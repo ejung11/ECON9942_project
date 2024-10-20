@@ -40,6 +40,13 @@ dict(
     ),
 
 dict(
+        name='intro_tr60',
+        display_name='Tr60_intro',
+        num_demo_participants=1,
+        app_sequence=['intro_tr60'],
+    ),
+
+dict(
         name='cpr_partial_baseline_2',
         display_name='CPR baseline 2',
         num_demo_participants=8,

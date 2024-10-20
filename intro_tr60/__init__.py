@@ -2,14 +2,14 @@ from otree.api import *
 
 
 doc = """
-This is the intro app for Part 2 (baseline) of 
+This is the intro app for Part 2 - High Treatment (60% sharing) of 
 the project "Managing the Tragedy of the Commons: A Partial Output-Sharing Approach"
 This will include Instructions, Example, KnowledgeCheck Pages.
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'intro_baseline_2'
+    NAME_IN_URL = 'intro_tr60'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
