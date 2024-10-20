@@ -39,12 +39,27 @@ class Player(BasePlayer):
     )
 
     kc3 = models.StringField(
+        choices=[['False', 'A.  30%'], ['True', 'B.  60%'], ['False', 'C.  90%'], ['False', 'D.  100%'], ],
+        label='3. How much do you have to share returns from Activity B?',
+        widget=widgets.RadioSelect,
+    )
+
+    kc4 = models.StringField(
+        choices=[['False', 'A.  Return from Activity A'],
+                 ['False', 'B.  Return from Activity B'],
+                 ['False', 'C.  Earning from group sharing'],
+                 ['True', 'D.  All of Above'], ],
+        label='4. What is your payoff for each round?',
+        widget=widgets.RadioSelect,
+    )
+
+    kc5 = models.StringField(
         choices=[['True', 'A.  The sum of your earnings from both Part 1 and Part 2.'],
                  ['False', 'B.  The earnings from Part 2.'],
                  ['False', 'C.  A random Part will be selected, and only the earnings from that Part.'],
                  ['False', 'D.  A fixed amount of money, regardless of your performance.'],
                  ],
-        label='3. How will your final payoff be calculated?',
+        label='5. How will your final payoff be calculated?',
         widget=widgets.RadioSelect,
     )
 
@@ -61,6 +76,8 @@ class KnowledgeCheck(Page):
         'kc1',
         'kc2',
         'kc3',
+        'kc4',
+        'kc5',
                    ]
 
     @staticmethod
@@ -69,13 +86,17 @@ class KnowledgeCheck(Page):
             kc1='True',
             kc2='True',
             kc3='True',
+            kc4='True',
+            kc5='True',
         )
 
         # Define specific error messages for each question
         error_messages = dict(
             kc1="The group will be reassigned randomly at the beginning of Part 2",
             kc2="There are 10 rounds in the game.",
-            kc3="Your final earnings will be the sum of the earnings from both parts."
+            kc3="You are sharing 60% of returns from Activity B wih the group members.",
+            kc4="Three sources of earnings are returns from 1. Activity A, 2. Activity B, 3. Group share ",
+            kc5="Your final earnings will be the sum of the earnings from both parts.",
         )
 
         # Prepare the final error messages for display if a wrong answer is selected
