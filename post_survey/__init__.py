@@ -202,67 +202,64 @@ class Player(BasePlayer):
 
     # Big 5 personality traits using Ten-Item Personality Inventory-(TIPI) Gosling et al. (2003)
     big5_extraversion = models.IntegerField(
-        label='Extraverted, enthusiastic.',
-        choices = Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        label='I see myself as someone who is outgoing and full of energy.',
+        choices=Constants.StandardChoices,
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_agreeableness_r = models.IntegerField(
-        label='Critical, quarrelsome.',
-        choices= Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        label='I see myself as someone who tends to find fault with others and can be argumentative.',
+        choices=Constants.StandardChoices,
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_conscientiousness = models.IntegerField(
-        label='Dependable, self-disciplined.',
+        label='I see myself as someone who is reliable and has strong self-discipline.',
         choices=Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_emotional_stability_r = models.IntegerField(
-        label='Anxious, easily upset.',
+        label='I see myself as someone who often feels anxious and gets upset easily.',
         choices=Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_openness = models.IntegerField(
-        label='Open to new experiences, complex.',
+        label='I see myself as someone who is open to new experiences and has a rich imagination.',
         choices=Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_extraversion_r = models.IntegerField(
-        label='Reserved, quiet.',
+        label='I see myself as someone who is reserved and tends to be quiet.',
         choices=Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
-
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_agreeableness = models.IntegerField(
-        label='Sympathetic, warm.',
+        label='I see myself as someone who is compassionate and has a warm personality.',
         choices=Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_conscientiousness_r = models.IntegerField(
-        label='Disorganized, careless.',
+        label='I see myself as someone who tends to be disorganized and sometimes careless.',
         choices=Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_emotional_stability = models.IntegerField(
-        label='Calm, emotionally stable.',
+        label='I see myself as someone who is generally calm and handles stress well.',
         choices=Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        # widget=widgets.RadioSelectHorizontal,
     )
 
     big5_openness_r = models.IntegerField(
-        label='Conventional, uncreative.',
+        label='I see myself as someone who prefers routine over new experiences and is not very imaginative.',
         choices=Constants.StandardChoices,
-        #widget=widgets.RadioSelectHorizontal,
+        # widget=widgets.RadioSelectHorizontal,
     )
-
-
 
 
 
