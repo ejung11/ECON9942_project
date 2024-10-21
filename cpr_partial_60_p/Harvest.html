@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block title %}
-    <strong>Part 1 Practice: Round {{group.round_number}}</strong>
+    <strong>Part 2 Practice: Round {{group.round_number}}</strong>
 {% endblock %}
 
 {% block content %}
@@ -32,9 +32,10 @@
         and have to allocate these into two activities.
         <br>
         <ul>
-            <li><strong>  Activity A </strong>: It gives a fixed return per effort. </li>
+            <li><strong>  Activity A </strong>: It gives a fixed return per effort.</li>
             <li><strong>  Activity B </strong>: It gives a variable return per effort.
                                                 Depending on the total effort allocated to Activity B.</li>
+            <li><strong>  Sharing Rule </strong>: You will <strong>share 60% of your returns from Activity B</strong> with the other group members.</li>
         </ul>
 
         You will choose how much effort you want to allocate to Activity B.
@@ -75,6 +76,7 @@
     <h4>Preview of Your Earnings:</h4>
     <p>Earnings from Activity A: <strong><span id="earnings_activity_A">0</span></strong> ECUs</p>
     <p>Earnings from Activity B: <strong><span id="earnings_activity_B">0</span></strong> ECUs</p>
+    <p>Earnings from Group's Sharing: <strong><span id="earnings_group_share">0</span></strong> ECUs</p>
     <p>Total Earnings: <strong><span id="total_earnings">0</span></strong> ECUs</p>
     </div>
 
@@ -103,6 +105,7 @@
             const ind_return_act_b = 20;  // Return per effort for Activity 2
             const ext_cost = 0.1171;  // Externality cost
             const group_size = 8;
+            const share = {{Constants.share}};
 
             // Function to calculate and update total earnings based on the sliders' values
             function updateTotalEarnings() {
@@ -111,15 +114,22 @@
 
                 // Earnings from Activity A and Activity B (already calculated)
                 let earningsActivityA = return_act_a * ( endowment - activityBEffort);
-                let earningsActivityB_float = activityBEffort *
+
+                let earningsActivityB_float = (1 - share) * activityBEffort *
                                         (ind_return_act_b - ext_cost * (guessEffort * (group_size - 1) + activityBEffort));
                 let earningsActivityB = Math.round(earningsActivityB_float);
 
+                let earningsGroup_float = (share * (guessEffort * (group_size - 1) + activityBEffort) *
+                                    (ind_return_act_b - ext_cost * (guessEffort * (group_size - 1) + activityBEffort)))
+                                    /group_size;
+                let earningsGroup = Math.round(earningsGroup_float);
+
                 document.getElementById('earnings_activity_A').textContent = earningsActivityA;
                 document.getElementById('earnings_activity_B').textContent = earningsActivityB;
+                document.getElementById('earnings_group_share').textContent = earningsGroup;
 
                 // Calculate and display total earnings
-                let totalEarnings = earningsActivityA + earningsActivityB;
+                let totalEarnings = earningsActivityA + earningsActivityB + earningsGroup;
                 document.getElementById('total_earnings').textContent = totalEarnings;
             };
 

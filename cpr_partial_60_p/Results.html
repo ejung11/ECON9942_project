@@ -1,10 +1,29 @@
-{{ block title }}
-    Page title
-{{ endblock }}
+{% extends "global/Page.html" %}
+{% load otree %}
 
-{{ block content }}
+{% block title %}
+    <strong>Results</strong>
+{% endblock %}
 
-    {{ next_button }}
-{{ endblock }}
+{% block content %}
+    <h4><strong>Part 2 Practice: Round {{group.round_number}}</strong></h4>
+
+    <table class="table-condensed" style="width:500px; margin-top:20px;">
+        <tr><td>In this round</td></tr>
+        <tr><td>You allocation to Activity B:</td><td>{{ player.effort_act_b }} efforts</td></tr>
+        <tr><td>Other's average allocation to Activity B:</td><td></td></tr>
+        <tr><td></td><td>{{ player.others_avg_effort_act_b }} efforts</td></tr>
+        <tr><td>Total group's allocation to Activity B:</td><td>{{ player.group_total_effort }} efforts</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>Your earnings this round:</td><td>{{ player.period_payoff_int }} ECUs</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+    </table>
 
 
+    {% next_button %}
+
+{% endblock %}
