@@ -23,6 +23,16 @@ dict(
         app_sequence=['cpr_partial_60_p'],
     ),
 
+dict(
+        name='test_tr60_sequence',
+        display_name='CPR game partial out-put sharing (High Treatment) All sequence',
+        num_demo_participants=8,
+        app_sequence=['intro_tr60',
+                      'cpr_partial_60_p',
+                      'cpr_partial_60',
+                      ],
+    ),
+
 
 dict(
         name='cpr_partial_baseline_p',

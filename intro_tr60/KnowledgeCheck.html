@@ -59,6 +59,34 @@
             {% endif %}
         </div>
 
+        <br>
+
+
+        <!-- Question 4 -->
+        <div class="form-group">
+            <label>{{ form.kc4.label }}</label>
+            {{ form.kc4 }}
+            {% if form.kc4.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc4.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <br>
+
+
+        <!-- Question 5 -->
+        <div class="form-group">
+            <label>{{ form.kc5.label }}</label>
+            {{ form.kc5 }}
+            {% if form.kc5.errors %}
+                <div class="alert alert-danger">
+                    {{ form.kc5.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
     </form>
 
 </div>

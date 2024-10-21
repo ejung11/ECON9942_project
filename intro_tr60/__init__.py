@@ -34,13 +34,13 @@ class Player(BasePlayer):
 
     kc2 = models.StringField(
         choices=[['False', 'A.  5'], ['True', 'B.  10'], ['False', 'C.  15'], ['False', 'D.  20'], ],
-        label='2. How many rounds will you play in the game?',
+        label='2. How many rounds will you play in Part 2?',
         widget=widgets.RadioSelect,
     )
 
     kc3 = models.StringField(
         choices=[['False', 'A.  30%'], ['True', 'B.  60%'], ['False', 'C.  90%'], ['False', 'D.  100%'], ],
-        label='3. How much do you have to share returns from Activity B?',
+        label='3. How much do you have to share returns from Activity B with your group members?',
         widget=widgets.RadioSelect,
     )
 
@@ -93,7 +93,7 @@ class KnowledgeCheck(Page):
         # Define specific error messages for each question
         error_messages = dict(
             kc1="The group will be reassigned randomly at the beginning of Part 2",
-            kc2="There are 10 rounds in the game.",
+            kc2="There are 10 rounds in this part.",
             kc3="You are sharing 60% of returns from Activity B wih the group members.",
             kc4="Three sources of earnings are returns from 1. Activity A, 2. Activity B, 3. Group share ",
             kc5="Your final earnings will be the sum of the earnings from both parts.",
