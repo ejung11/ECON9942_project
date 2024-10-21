@@ -1,6 +1,7 @@
 from otree.api import *
 
 
+
 doc = """
 This is the post-survey app for the project "Managing the Tragedy of the Commons: A Partial Output-Sharing Approach"
 This will include Demographics, Decision, and Big 5 personality traits pages.
