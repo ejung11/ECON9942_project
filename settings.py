@@ -3,6 +3,40 @@ from os import environ
 
 SESSION_CONFIGS = [
     dict(
+        name='Test_session_AA',
+        display_name='Test session AA',
+        num_demo_participants=8,
+        app_sequence=[
+                'consent',
+                'instructions_general',
+                'intro_baseline',
+                'cpr_partial_baseline_p',
+                'cpr_partial_baseline',
+                'intro_baseline_2',
+                'cpr_partial_baseline_2',
+                'post_survey',
+                          ],
+        ),
+
+    dict(
+        name='Test_session_AB',
+        display_name='Test session AB',
+        num_demo_participants=8,
+        app_sequence=[
+                'consent',
+                'instructions_general',
+                'intro_baseline',
+                'cpr_partial_baseline_p',
+                'cpr_partial_baseline',
+                'intro_tr60',
+                'cpr_partial_60_p',
+                'cpr_partial_60',
+                'post_survey',
+                          ],
+        ),
+
+
+    dict(
         name='cpr_partial_baseline',
         display_name='CPR game partial out-put sharing (baseline)',
         num_demo_participants=8,
@@ -97,21 +131,7 @@ dict(
 
 
 
-dict(
-        name='Test_session_AA',
-        display_name='Test session AA',
-        num_demo_participants=8,
-        app_sequence=[
-            'consent',
-            'instructions_general',
-            'intro_baseline',
-            'cpr_partial_baseline_p',
-            'cpr_partial_baseline',
-            'intro_baseline_2',
-            'cpr_partial_baseline_2',
-            'post_survey',
-                      ],
-    ),
+
     #
     #
     # dict(
