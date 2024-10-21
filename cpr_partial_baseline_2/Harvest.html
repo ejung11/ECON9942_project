@@ -112,7 +112,7 @@
                 let earningsActivityA = return_act_a * ( endowment - activityBEffort);
                 let earningsActivityB_float = activityBEffort *
                                         (ind_return_act_b - ext_cost * (guessEffort * (group_size - 1) + activityBEffort));
-                let earningsActivityB = parseInt(earningsActivityB_float);
+                let earningsActivityB = Math.round(earningsActivityB_float);
 
                 document.getElementById('earnings_activity_A').textContent = earningsActivityA;
                 document.getElementById('earnings_activity_B').textContent = earningsActivityB;

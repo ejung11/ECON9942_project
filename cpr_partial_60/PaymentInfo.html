@@ -1,34 +1,35 @@
 {% extends "global/Page.html" %}
 {% load otree %}
 
+{{ block style }}
+   <link rel="stylesheet" type="text/css" href="{{ static 'global/global_styles.css' }}"/>
+    <style>
+       h5 {
+           text-decoration: underline;
+       }
+   </style>
+{{ endblock }}
+
 {% block title %}
-    Final Report Page for the CPR game B: Real
+<div class="narrow-body">
+    Final Report for Part 2
+</div>
 {% endblock %}
 
 {% block content %}
-
+<div class="narrow-body">
     <div class="panel panel-default" style="margin-bottom:10px">
         <div class="panel-body">
-            <p>Thank you. This is the end of game B and the end of the experiment.</p>
-            <p>Your Earnings is {{ player.participant.vars.totalEarnings_b }} tokens which is equal to <strong>${{player.participant.vars.totalCash_b}}</strong>. </p>
-            <br>
-
-            <h5><strong>Opportunity for bonus cash</strong></h5>
+            <p>This is the end of Part 2.</p>
+            <p>Your Earnings in Part 2 is <strong>{{ player.participant.vars.totalEarnings_b }} ECUs</strong>. </p>
 
             <p>
-                You can earn bonus cash of <strong>$5</strong> on top of your earnings for filling out following questionnaire. <br>
-                If you wish to receive the bonus, please click "Questionnaire" button below and complete.
+                This is the end of the decision-making. <br>
+                While we are preparing for your payment, please fill out the post-survey.
             </p>
-
-            <p>need to add the button for qualtrics</p>
-
         </div>
     </div>
-
-
-
-
-
+</div>
 
 {% endblock %}
 

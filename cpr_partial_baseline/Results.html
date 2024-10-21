@@ -10,10 +10,10 @@
 
     <table class="table-condensed" style="width:500px; margin-top:20px;">
         <tr><td>In this round</td></tr>
-        <tr><td>You harvested:</td><td>{{ player.effort_act_b }} efforts</td></tr>
-        <tr><td>Other participants total harvested:</td><td></td></tr>
-        <tr><td></td><td>{{ player.others_effort_act_b }} efforts</td></tr>
-        <tr><td>Total harvest:</td><td>{{ group.total_effort_act_b }} efforts</td></tr>
+        <tr><td>You allocation to Activity B:</td><td>{{ player.effort_act_b }} efforts</td></tr>
+        <tr><td>Other's average allocation to Activity B:</td><td></td></tr>
+        <tr><td></td><td>{{ player.others_avg_effort_act_b }} efforts</td></tr>
+        <tr><td>Total group's allocation to Activity B:</td><td>{{ group.total_effort_act_b }} efforts</td></tr>
 
         <tr><td colspan="2"><hr/></td></tr>
 
@@ -35,7 +35,7 @@
                 <table class="table" style="width:500px">
                     <tr>
                         <th class="text-center">Round</th>
-                        <th class="text-center">Your harvest</th>
+                        <th class="text-center">Your allocation to Activity B</th>
                         <th class="text-center">Your earning (Round)</th>
                         <th class="text-center">Accumulated earnings</th>
                     </tr>
@@ -43,7 +43,7 @@
                     {% for p in player.in_previous_rounds %}
                         <tr>
                             <td class="text-center my_style">{{p.round_number}}</td>
-                            <td class="text-center"> {{p.effort_act_b}} ECUs</td>
+                            <td class="text-center"> {{p.effort_act_b}} efforts</td>
                             <td class="text-center"> {{p.period_payoff_int}} ECUs</td>
                             <td class="text-center"> {{p.history_accumulated_earnings}} ECUs</td>
                         </tr>

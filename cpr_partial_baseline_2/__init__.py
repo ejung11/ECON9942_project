@@ -47,6 +47,7 @@ class Player(BasePlayer):
     )
 
     others_effort_act_b = models.IntegerField()
+    others_avg_effort_act_b = models.FloatField()
     history_accumulated_earnings = models.FloatField()
     period_payoff = models.FloatField()
     period_payoff_int = models.IntegerField()
@@ -81,10 +82,15 @@ def set_payoffs(g: Group):
 
         # Logically break down the payoff calculation
         base_endowment_value = 5 * Constants.endowment
-        individual_contribution = 20 * individual_effort
+        individual_extraction = 20 * individual_effort
         externality_cost = 0.1171 * group_total_effort * individual_effort
 
-        p.period_payoff = float(base_endowment_value - 5 * individual_effort + individual_contribution - externality_cost)
+        earning_act_a = base_endowment_value - (5 * individual_effort)
+        earning_act_b = individual_extraction - externality_cost
+
+        p.period_payoff = float(earning_act_a +
+                                earning_act_b
+                                )
         p.period_payoff_int = round(p.period_payoff)
 
         p.participant.vars['totalEarnings_b'] += p.period_payoff_int
@@ -96,6 +102,8 @@ def set_payoffs(g: Group):
 
         # Log effort of others
         p.others_effort_act_b = group_total_effort - individual_effort
+        p.others_avg_effort_act_b = round((group_total_effort - individual_effort) / (Constants.players_per_group - 1),
+                                          1)
 
 # Old version
 # def set_payoffs(g: Group):

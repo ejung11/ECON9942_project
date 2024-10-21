@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin report</title>
+</head>
+<body>
+<ul>
+    {{ for i in info }}
+        <li>{{ i.0 }} has earned ${{ i.1 }}</li>
+    {{ endfor }}
+
+</ul>
+</body>
+</html>
