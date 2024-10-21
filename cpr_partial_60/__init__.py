@@ -21,7 +21,7 @@ This will include practice, Harvest, Results, PaymentInfo, rules.
 class Constants(BaseConstants):
     name_in_url = 'cpr_tr60'
     players_per_group = 8
-    num_rounds = 2
+    num_rounds = 10
     instructions_template = 'cpr_partial_60/rules.html'
     endowment = 25
     conversion = 0.0025
@@ -101,9 +101,6 @@ def set_payoffs(g: Group):
 
         p.period_payoff_int = round(p.period_payoff)
 
-        # --- For testing purpose, after testing please delete this line ----
-        p.participant.vars['totalEarnings_a'] = 0
-        #--------------------------------------------------------------------
 
         p.participant.vars['totalEarnings_b'] += p.period_payoff_int
         p.history_accumulated_earnings = p.participant.vars['totalEarnings_b']
