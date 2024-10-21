@@ -10,8 +10,12 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-import random
 
+doc = """
+This is the Decision app for Part 1 Baseline of 
+the project "Managing the Tragedy of the Commons: A Partial Output-Sharing Approach"
+This will include practice, Harvest, Results, PaymentInfo, rules.
+"""
 
 class Constants(BaseConstants):
     name_in_url = 'cpr_baseline'

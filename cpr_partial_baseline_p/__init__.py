@@ -1,16 +1,10 @@
-from otree.api import (
-    Page,
-    WaitPage,
-    models,
-    widgets,
-    BaseConstants,
-    BaseSubsession,
-    BaseGroup,
-    BasePlayer,
-    Currency as c,
-    currency_range,
-)
-import random
+from otree.api import *
+
+doc = """
+This is the Practice app for Part 1 Baseline of 
+the project "Managing the Tragedy of the Commons: A Partial Output-Sharing Approach"
+This will include practice, Harvest, Results.
+"""
 
 
 class Constants(BaseConstants):

@@ -1,17 +1,11 @@
-from otree.api import (
-    Page,
-    WaitPage,
-    models,
-    widgets,
-    BaseConstants,
-    BaseSubsession,
-    BaseGroup,
-    BasePlayer,
-    Currency as c,
-    currency_range,
-)
-import random
+from otree.api import *
 
+
+doc = """
+This is the Decision app for Part 2 Baseline of 
+the project "Managing the Tragedy of the Commons: A Partial Output-Sharing Approach"
+This will include practice, Harvest, Results, PaymentInfo, rules.
+"""
 
 class Constants(BaseConstants):
     name_in_url = 'cpr_baseline_2'
